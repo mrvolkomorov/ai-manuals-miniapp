@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Глоссарий — базовые понятия курса | Мануалы</title>
+<style>
+:root{--accent:#0ea5e9;--accent-dark:#0284c7;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content p{margin-bottom:12px;font-size:14px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #bae6fd;display:flex;align-items:center;gap:8px}.content h2:first-child{margin-top:0}.gloss-group{margin-bottom:24px}.gloss-term{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:10px 0;border-left:3px solid var(--accent)}.gloss-term .term{font-weight:700;font-size:15px;color:var(--accent-dark);margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}.gloss-term .term .type{font-weight:400;font-size:11px;color:var(--hint);background:var(--code-bg);padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.3px}.gloss-term .def{font-size:14px;color:var(--text);margin-bottom:4px}.gloss-term .app{font-size:13px;color:var(--accent);font-style:italic}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.gloss-term{background:#1a1a2e;border-color:#333}.content h2{border-bottom-color:#333}.gloss-term .term{color:var(--accent)}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">Справочник</div>
+<h1>Глоссарий</h1>
+<div class="meta">Базовые понятия курса · Занятия 1–2 · v1.0 · 10.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<p>Термины сгруппированы по темам: от простых к продвинутым. Каждый термин — короткое «что это» и фраза «как применять».</p>
+
+<!-- Section 1 -->
+<h2><span>🧠</span> 1. ИИ и модели</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">LLM <span class="type">Large Language Model</span></div><div class="def">Нейросеть, которая понимает и генерирует текст. ChatGPT, DeepSeek, Qwen, Gemini — всё это LLM.</div><div class="app">→ В метафоре «кухни» — повар.</div></div>
+<div class="gloss-term"><div class="term">Токен <span class="type">Token</span></div><div class="def">Единица текста, которую LLM читает или пишет. ~1 токен ≈ ¾ русского слова. Стоимость LLM измеряется в $/1M токенов.</div><div class="app">→ Чем больше токенов — тем дороже каждый запрос.</div></div>
+<div class="gloss-term"><div class="term">Контекстное окно <span class="type">Context Window</span></div><div class="def">Сколько текста LLM «помнит» в одном разговоре (128K, 256K, 1M). Чем больше — тем длиннее документ можно скормить разом.</div><div class="app">→ Для длинных документов выбирайте модели с 1M+ контекста.</div></div>
+<div class="gloss-term"><div class="term">Следование инструкции <span class="type">Instruction Following</span></div><div class="def">Насколько точно модель выполняет то, что вы попросили (роль, формат, запреты). Ключевое качество для автоматизации.</div><div class="app">→ Если модель «своевольничает» — сценарий ломается.</div></div>
+<div class="gloss-term"><div class="term">Reasoning-модель <span class="type">размышляющая модель</span></div><div class="def">LLM, которая «думает» перед ответом (видно блок «Thinking»). DeepSeek-R1, Step 3.5 Flash.</div><div class="app">→ Хороша для сложного анализа, но медленнее и дороже обычных.</div></div>
+<div class="gloss-term"><div class="term">MoE <span class="type">Mixture of Experts</span></div><div class="def">Архитектура, где работают не все параметры сразу, а только часть. Делает модель дешёвой и быстрой без потери качества.</div><div class="app">→ LongCat, Step Flash, DeepSeek V4 — MoE-модели.</div></div>
+<div class="gloss-term"><div class="term">Бесплатная модель <span class="type">Free Model</span></div><div class="def">Модель на OpenRouter с нулевой ценой. Есть лимиты запросов (50–1000/сутки).</div><div class="app">→ Подходит для обучения и тестов: Step 3.5 Flash, LongCat 2.0.</div></div>
+</div>
+
+<!-- Section 2 -->
+<h2><span>🔌</span> 2. MCP и агенты</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">MCP <span class="type">Model Context Protocol</span></div><div class="def">Стандарт подключения внешних сервисов к ИИ. Как USB-разъём: один раз подключили Telegram — и он доступен в любом диалоге.</div><div class="app">→ В метафоре «кухни» — дверь в кладовую.</div></div>
+<div class="gloss-term"><div class="term">MCP-сервер</div><div class="def">Программа, которая связывает ИИ с внешним сервисом (Telegram, TGStat). Работает круглосуточно на Railway.</div><div class="app">→ Каждый участник разворачивает свой экземпляр.</div></div>
+<div class="gloss-term"><div class="term">Агент <span class="type">Agent / ИИ-агент</span></div><div class="def">Настроенный ИИ-помощник с системной инструкцией и MCP-серверами. Работает по правилам: роль, алгоритм, формат выдачи, запреты.</div><div class="app">→ В отличие от чата — агент не задаёт уточняющих вопросов.</div></div>
+<div class="gloss-term"><div class="term">Агентный клиент</div><div class="def">Приложение, в котором создаются агенты и подключаются MCP. LobeHub, Cherry Studio, DeepChat.</div><div class="app">→ В метафоре «кухни» — официант.</div></div>
+<div class="gloss-term"><div class="term">Системная инструкция <span class="type">System Prompt</span></div><div class="def">Набор правил, которые агент выполняет всегда — без напоминаний. Задаётся один раз при создании: роль, контекст, алгоритм, формат, запреты.</div><div class="app">→ Это «паспорт» агента.</div></div>
+<div class="gloss-term"><div class="term">MTProto / Telethon</div><div class="def">Протокол, через который MCP-сервер подключается к вашему Telegram-аккаунту от вашего имени. Даёт доступ к чатам и каналам (в отличие от Bot API).</div><div class="app">→ Используется для Telegram-MCP.</div></div>
+<div class="gloss-term"><div class="term">Session String</div><div class="def">«Ключ сессии» — связывает MCP-сервер с вашим Telegram-аккаунтом. Генерируется через Replit. Хранится в зашифрованных переменных Railway.</div><div class="app">→ Никому не передавать!</div></div>
+</div>
+
+<!-- Section 3 -->
+<h2><span>⚙️</span> 3. Автоматизация (n8n)</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">Workflow <span class="type">воркфлоу</span></div><div class="def">Последовательность шагов, которые n8n выполняет автоматически. На холсте — цепочка соединённых нод.</div><div class="app">→ В метафоре «кухни» — рецепт.</div></div>
+<div class="gloss-term"><div class="term">Нода <span class="type">Node</span></div><div class="def">Один шаг в workflow: триггер, фильтр, HTTP-запрос, запись в таблицу. Соединяются линиями, данные текут слева направо.</div><div class="app">→ Каждая нода делает одно действие.</div></div>
+<div class="gloss-term"><div class="term">Триггер <span class="type">Trigger</span></div><div class="def">Нода, которая запускает workflow: Execute (ручной), Schedule (по расписанию), Webhook (по событию).</div><div class="app">→ На занятии используем Execute для тестов.</div></div>
+<div class="gloss-term"><div class="term">Execute</div><div class="def">Ручной запуск workflow — кнопка ▶ на первой ноде.</div><div class="app">→ Нажал → посмотрел → поправил → снова Execute.</div></div>
+<div class="gloss-term"><div class="term">Schedule <span class="type">расписание</span></div><div class="def">Триггер по времени: каждый час, раз в день, по понедельникам в 9:00.</div><div class="app">→ Для регулярных задач — замените Manual Trigger на Schedule.</div></div>
+<div class="gloss-term"><div class="term">Фильтр <span class="type">IF</span></div><div class="def">Нода с условием: true (пропускаем) или false (игнорируем). Например: «в тексте есть слово "открытие"?».</div><div class="app">→ Для отсева ненужных постов.</div></div>
+<div class="gloss-term"><div class="term">HTTP Request</div><div class="def">Нода, которая отправляет запрос к внешнему сервису — например, к LLM через OpenRouter.</div><div class="app">→ Основной способ вызвать нейросеть из n8n.</div></div>
+<div class="gloss-term"><div class="term">Credential <span class="type">учётные данные</span></div><div class="def">Сохранённый ключ доступа: API-ключ LLM, пароль Google, токен Telegram. Создаётся один раз для всех workflow.</div><div class="app">→ Не переносится при импорте шаблона.</div></div>
+<div class="gloss-term"><div class="term">Header Auth</div><div class="def">Тип credential для LLM. В заголовке передаётся: Authorization: Bearer &lt;ключ&gt;.</div><div class="app">→ Стандартный формат для OpenRouter и AiTunnel.</div></div>
+<div class="gloss-term"><div class="term">OAuth / OAuth2</div><div class="def">Авторизация через «Войти с Google». Безопасно, без передачи пароля.</div><div class="app">→ Используется для Google Sheets в n8n.</div></div>
+<div class="gloss-term"><div class="term">NoOp <span class="type">No Operation</span></div><div class="def">Нода-заглушка «ничего не делать». Ставится в false-ветку фильтра.</div><div class="app">→ Чтобы workflow не падал, когда условие не сработало.</div></div>
+<div class="gloss-term"><div class="term">Sticky Note</div><div class="def">Заметка на холсте n8n. Не влияет на работу.</div><div class="app">→ Для подсказок: «🔴 ЗАМЕНИТЕ это значение».</div></div>
+<div class="gloss-term"><div class="term">JSON</div><div class="def">Формат данных для передачи между нодами: выглядит как {} с ключами и значениями.</div><div class="app">→ n8n передаёт данные между нодами в JSON.</div></div>
+<div class="gloss-term"><div class="term">Webhook</div><div class="def">Триггер по внешнему сигналу: кто-то отправил запрос на URL → n8n запустил workflow.</div><div class="app">→ Для интеграций с Telegram-ботами и внешними сервисами.</div></div>
+<div class="gloss-term"><div class="term">Polling <span class="type">опрос</span></div><div class="def">Режим: n8n сам периодически проверяет источник — «есть новое?».</div><div class="app">→ Отличается от Webhook тем, что n8n сам ходит за данными.</div></div>
+<div class="gloss-term"><div class="term">Батч <span class="type">Batch</span></div><div class="def">Обработка пачкой: 50 постов за раз вместо одного.</div><div class="app">→ Экономит время и токены.</div></div>
+</div>
+
+<!-- Section 4 -->
+<h2><span>🌐</span> 4. Платформы и сервисы</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">OpenRouter</div><div class="def">Единый провайдер доступа к 300+ LLM через один API-ключ. Бесплатные модели без пополнения.</div><div class="app">→ openrouter.ai</div></div>
+<div class="gloss-term"><div class="term">AiTunnel</div><div class="def">Российский провайдер LLM с оплатой в рублях. Без VPN. Пополнение через СБП.</div><div class="app">→ aitunnel.ru</div></div>
+<div class="gloss-term"><div class="term">Railway</div><div class="def">Платформа для запуска серверов в облаке. Используется для MCP-серверов. Бесплатный тариф — $5/мес.</div><div class="app">→ Деплой из GitHub в 1 клик.</div></div>
+<div class="gloss-term"><div class="term">TGStat</div><div class="def">Сервис аналитики Telegram-каналов: подписчики, охваты, ERR, динамика. Через MCP — 20 инструментов.</div><div class="app">→ tgstat.ru (платная подписка).</div></div>
+<div class="gloss-term"><div class="term">Deepgram</div><div class="def">Сервис расшифровки аудио/видео в текст. Русский язык, различает говорящих, таймкоды.</div><div class="app">→ ~$200 бесплатных кредитов при регистрации.</div></div>
+<div class="gloss-term"><div class="term">Figma / Supa / Gamma</div><div class="def">Инструменты для визуального контента с ИИ. Работают в браузере.</div><div class="app">→ Figma для дизайна, Supa и Gamma — для презентаций.</div></div>
+<div class="gloss-term"><div class="term">Replit</div><div class="def">Браузерная среда для запуска кода. Без установки Python.</div><div class="app">→ Используется один раз — для генерации Session String.</div></div>
+</div>
+
+<!-- Section 5 -->
+<h2><span>📊</span> 5. Метрики и аналитика</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">ERR <span class="type">Engagement Rate by Reach</span></div><div class="def">Коэффициент вовлечённости: (реакции / охват) × 100%. Высокий ERR = контент попал в аудиторию.</div><div class="app">→ Ключевая метрика качества контента.</div></div>
+<div class="gloss-term"><div class="term">Охват <span class="type">Reach</span></div><div class="def">Сколько уникальных пользователей увидели пост.</div><div class="app">→ Отличается от просмотров (один человек может посмотреть много раз).</div></div>
+<div class="gloss-term"><div class="term">Динамика</div><div class="def">Изменение метрики во времени: график или таблица помесячно/понедельно.</div><div class="app">→ Позволяет увидеть тренд — где перелом?</div></div>
+<div class="gloss-term"><div class="term">Гипотеза <span class="type">в контексте аналитики</span></div><div class="def">Проверяемое предположение о том, что влияет на охваты. Формула: «Публикации с [X] получают в N раз больше охватов, чем [Y]».</div><div class="app">→ Без гипотезы данные — просто цифры.</div></div>
+</div>
+
+<!-- Section 6 -->
+<h2><span>🎨</span> 6. Контент и визуал</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">Кросс-постинг</div><div class="def">Автоматическая адаптация одного материала под несколько площадок (VK, Telegram, Дзен). У каждой — свой тон, длина, структура.</div><div class="app">→ Не путать с репостом — кросс-постинг адаптирует контент.</div></div>
+<div class="gloss-term"><div class="term">«1 → 5»</div><div class="def">Сценарий: из одного исходного текста генерируются 5 черновиков: VK, Telegram, ОК, Дзен + анонс.</div><div class="app">→ Максимальная утилизация одного материала.</div></div>
+<div class="gloss-term"><div class="term">CTA <span class="type">Call to Action</span></div><div class="def">Призыв к действию в конце поста: «Подпишитесь», «Перейдите по ссылке».</div><div class="app">→ Без CTA пост — просто информация.</div></div>
+<div class="gloss-term"><div class="term">Чанкинг <span class="type">Chunking</span></div><div class="def">Разбиение длинного текста на смысловые блоки. Каждый чанк = одна мысль.</div><div class="app">→ Используется при формировании карточек из расшифровки.</div></div>
+<div class="gloss-term"><div class="term">Диаразация <span class="type">Diarization</span></div><div class="def">Различение говорящих при расшифровке: «Speaker 1», «Speaker 2».</div><div class="app">→ Позволяет понять, кто что сказал в интервью.</div></div>
+<div class="gloss-term"><div class="term">Inpaint / Outpaint</div><div class="def">Inpaint — заменить или убрать объект внутри картинки. Outpaint — дорисовать за пределами границ.</div><div class="app">→ Inpaint: убрать логотип. Outpaint: расширить фон.</div></div>
+<div class="gloss-term"><div class="term">Restyle <span class="type">рестайл</span></div><div class="def">Перенос стиля: перекрасить чужую инфографику под цвета и шрифты вашего бренда.</div><div class="app">→ Текст и логотип — только руками.</div></div>
+<div class="gloss-term"><div class="term">Редакторская нормализация</div><div class="def">Сжатие текста: убрать «воду», сохранить факты и цифры. Объём — минус 40%.</div><div class="app">→ Промпт №6 в библиотеке.</div></div>
+</div>
+
+<!-- Section 7 -->
+<h2><span>🔒</span> 7. Безопасность</h2>
+<div class="gloss-group">
+<div class="gloss-term"><div class="term">API-ключ</div><div class="def">Секретный код доступа к сервису. Как пароль от аккаунта.</div><div class="app">→ Не публиковать в чатах, скриншотах и репозиториях.</div></div>
+<div class="gloss-term"><div class="term">OAuth / OAuth2</div><div class="def">Безопасная авторизация без передачи пароля. «Войти с Google» — это OAuth.</div><div class="app">→ Приложение получает доступ только к тому, что вы разрешили.</div></div>
+<div class="gloss-term"><div class="term">Prompt Injection</div><div class="def">Атака: пользователь вставляет команду, переопределяющую системную инструкцию.</div><div class="app">→ Защита — жёсткие запреты в system prompt.</div></div>
+<div class="gloss-term"><div class="term">Human-in-the-loop</div><div class="def">Принцип: автоматизация готовит черновик, человек принимает решение.</div><div class="app">→ Автоматическая публикация без человека — запрещена.</div></div>
+<div class="gloss-term"><div class="term">NDA <span class="type">Non-Disclosure Agreement</span></div><div class="def">Документы, которые нельзя показывать третьим лицам — в том числе ИИ.</div><div class="app">→ Не загружайте NDA-материалы в облачные сервисы.</div></div>
+<div class="gloss-term"><div class="term">Обезличивание</div><div class="def">Замена реальных данных (названий, сумм, ИНН) на плейсхолдеры [ОРГАНИЗАЦИЯ], [СУММА].</div><div class="app">→ Обязательно для NDA-материалов и персональных данных.</div></div>
+</div>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 10.09.2026</p></footer>
+</div>
+</body>
+</html>
