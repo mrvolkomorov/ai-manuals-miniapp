@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Импорт шаблона Трек А в n8n | Мануалы</title>
+<style>
+:root{--accent:#22c55e;--accent-dark:#16a34a;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark)}.content h2:first-child{margin-top:0}.content h3{font-size:15px;font-weight:600;margin:20px 0 8px}.content p{margin-bottom:12px;font-size:14px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code,.content pre{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px}.content code{padding:2px 6px}.content pre{padding:14px 16px;margin:12px 0 20px;overflow-x:auto;line-height:1.5;border:1px solid var(--border)}.content pre code{padding:0;background:none}.content .highlight-box{background:#f0fdf4;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 12px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 12px;border:1px solid var(--border)}.red-dot{color:#ef4444;font-weight:700;font-size:18px}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.highlight-box{background:#0a1a0a}.warning-box{background:#1a1a0a}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">Шаблон</div>
+<h1>Импорт и настройка шаблона «Трек А» в n8n</h1>
+<div class="meta">Трек А — Мониторинг конкурента · v1.2 · 10.09.2026 · Курс «ИИ-инструменты для региональной редакции»</div>
+</header>
+
+<div class="content">
+<h2>Что делает этот шаблон</h2>
+<p>Связка «пост конкурента → фильтр по ключевым словам → саммаризация через LLM → запись в Google Таблицу».</p>
+<p>После импорта вы меняете только <strong>3 значения</strong>, нажимаете Execute — и в таблице появляется первая строка.</p>
+
+<div class="highlight-box"><strong>Важно: персональная инфраструктура.</strong> n8n — ваш персональный n8n Cloud (trial). Google — ваш персональный аккаунт. API-ключ LLM — ключ тренера на занятии, ваш собственный ключ дома.</div>
+
+<h2>Скачать шаблон</h2>
+<p><code>track_a_template.json</code> — файл из материалов Занятия 1.</p>
+
+<h2>Импорт в n8n Cloud</h2>
+<ol>
+<li>Войдите в свой n8n Cloud (<a href="https://n8n.cloud">n8n.cloud</a>) — ваш персональный trial-аккаунт</li>
+<li>Нажмите <strong>Add Workflow → Import from File</strong> → выберите <code>track_a_template.json</code></li>
+<li>Шаблон откроется на холсте. Нажмите <strong>Save</strong></li>
+</ol>
+
+<h2>Три значения, которые нужно заменить</h2>
+
+<h3><span class="red-dot">🔴</span> 1. Канал-донор</h3>
+<p>Узел «📄 Пост-донор (пример)» → поле <code>channel</code> → впишите название канала конкурента. Одновременно замените пример текста в поле <code>text</code> на реальный пост (или оставьте для теста).</p>
+
+<h3><span class="red-dot">🔴</span> 2. Ключевые слова</h3>
+<p>Узел «🔍 Фильтр по ключевым словам» → откройте условия. Слова по умолчанию: <code>открыт, событие, авария</code>. Замените на свои темы: <code>город, транспорт, ЖКХ, происшествия, открытие, закрытие</code>. Можно добавить/удалить строки условий (кнопка Add condition).</p>
+
+<h3><span class="red-dot">🔴</span> 3. Таблица</h3>
+<p>Узел «📝 Лента заметок (Sheets)» → поля:</p>
+<ul>
+<li><code>documentId</code> — ID вашей Google Таблицы (из ссылки между <code>/d/</code> и <code>/edit</code>)</li>
+<li><code>sheetName</code> — имя листа (обычно «Лист1»)</li>
+</ul>
+
+<h2>Подключение учётных данных (credentials)</h2>
+<p>В шаблоне два узла требуют credentials — они не переносятся с файлом. Создайте их вручную:</p>
+
+<h3>LLM API — ключ тренера (на занятии)</h3>
+<p>Узел «🤖 Саммаризация (LLM)» → поле Credential → Create New.</p>
+<ul>
+<li>Name: <code>LLM API (ключ от тренера)</code></li>
+<li>Credential Type: <strong>Header Auth</strong></li>
+<li>Header Name: <code>Authorization</code></li>
+<li>Header Value: <code>Bearer &lt;ключ-от-тренера&gt;</code></li>
+</ul>
+<p>Ключ выдаёт тренер на занятии. Дома замените на свой ключ.</p>
+
+<h3>Google Sheets — ваш персональный аккаунт</h3>
+<p>Узел «📝 Лента заметок (Sheets)» → поле Credential → Create New → Google Sheets OAuth2 API. Нажмите Sign In with Google → выберите свой персональный аккаунт → разрешите доступ.</p>
+
+<h2>Проверка (Execute)</h2>
+<ol>
+<li>Сохраните workflow</li>
+<li>Нажмите <strong>Execute Workflow</strong> (кнопка на узле «▶ Старт»)</li>
+<li>Ожидаемый результат: в таблице появилась строка с датой, каналом, темой, саммари и ссылкой</li>
+<li>Если строка не появилась — проверьте, прошёл ли пост фильтр по ключевым словам (узел IF: true/false ветка)</li>
+</ol>
+
+<h2>Типичные проблемы</h2>
+<table>
+<tr><th>Проблема</th><th>Решение</th></tr>
+<tr><td>Ошибка 401 в LLM</td><td>Проверьте формат: <code>Bearer sk-or-...</code> (OpenRouter) или <code>Api-Key ...</code> (AiTunnel)</td></tr>
+<tr><td>Ошибка доступа к Sheets</td><td>Проверьте documentId и права доступа (должен быть Anyone with link или ваш аккаунт)</td></tr>
+<tr><td>Пост не прошёл фильтр</td><td>Узел IF → проверьте ветку false: возможно, ключевые слова не совпадают</td></tr>
+<tr><td>Пустая саммаризация</td><td>Проверьте модель в HTTP Request — не все модели поддерживают русский</td></tr>
+</table>
+
+<h2>От трека А к реальному мониторингу</h2>
+<p>Шаблон использует Manual Trigger (кнопка Execute) — для теста. Для реальной работы замените узел «▶ Старт» на:</p>
+<ul>
+<li><strong>Telegram Trigger</strong> — если подключён бот к каналу конкурента</li>
+<li><strong>Schedule Trigger</strong> (каждый час) + RSS Feed / HTTP Request для сбора постов</li>
+</ul>
+
+<div class="highlight-box"><strong>Ключ на занятии vs дома:</strong> на занятии — ключ тренера. Дома — получите свой ключ на OpenRouter или AiTunnel и замените значение в том же credential. Рекомендация для дома: <code>deepseek-v3 (free)</code> — бесплатная модель, не требует пополнения баланса.</div>
+</div>
+<footer class="footer"><p>Курс «ИИ-инструменты для региональной редакции» · Обновлено 10.09.2026</p></footer>
+</div>
+</body>
+</html>

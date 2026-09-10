@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Telegram-MCP на Railway | Мануалы</title>
+<style>
+:root{--accent:#6366f1;--accent-dark:#4f46e5;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark)}.content h2:first-child{margin-top:0}.content h3{font-size:15px;font-weight:600;margin:20px 0 8px}.content p{margin-bottom:12px;font-size:14px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code,.content pre{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px}.content code{padding:2px 6px}.content pre{padding:14px 16px;margin:12px 0 20px;overflow-x:auto;line-height:1.5;border:1px solid var(--border)}.content pre code{padding:0;background:none}.content .highlight-box{background:#eff6ff;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 12px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 12px;border:1px solid var(--border)}.step-box{border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:16px 0;background:var(--surface)}.step-box .step-head{font-weight:700;font-size:15px;color:var(--accent);margin-bottom:8px}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.highlight-box{background:#1e1a3a}.warning-box{background:#1a1a0a}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">MCP-сервер</div>
+<h1>Развёртывание Telegram-MCP на Railway</h1>
+<div class="meta">telegram-mcp-http · v1.0 · 10.09.2026 · Курс «ИИ-инструменты для региональной редакции»</div>
+</header>
+
+<div class="content">
+<h2>Что мы делаем и зачем</h2>
+<p>Разворачиваем собственный MCP-сервер для Telegram на платформе Railway. После развёртывания ваш ИИ-клиент (LobeHub, Cherry Studio, DeepChat) сможет читать ваши чаты Telegram, искать сообщения, отправлять сообщения — <strong>от вашего имени</strong>.</p>
+<p>Каждый участник разворачивает СВОЙ сервер, подключённый к СВОЕМУ Telegram-аккаунту.</p>
+<div class="highlight-box"><strong>Никакой технической подготовки не нужно.</strong> Мы проходим каждый шаг впервые. Внимательно следуйте инструкции — всё получится. Итого времени: <strong>10–15 минут</strong>.</div>
+
+<h2>Обзор шагов (5 шагов)</h2>
+<ol>
+<li>Создать аккаунт на GitHub (3 мин)</li>
+<li>Сделать Fork репозитория (1 мин)</li>
+<li>Получить api_id и api_hash для Telegram (3 мин)</li>
+<li>Сгенерировать session string (3 мин)</li>
+<li>Развернуть на Railway и подключить (3 мин)</li>
+</ol>
+
+<h2>Шаг 1. Создать аккаунт на GitHub</h2>
+<p>GitHub — это хранилище кода. Аккаунт бесплатный.</p>
+<ol>
+<li><a href="https://github.com">github.com</a> → Sign up</li>
+<li>Введите email (любой, к которому есть доступ)</li>
+<li>Придумайте пароль (запишите!)</li>
+<li>Придумайте username — например, <code>ivanov-smm</code></li>
+<li>Подтвердите email кодом из письма</li>
+<li>Пройдите опрос (Skip personalization)</li>
+</ol>
+
+<h2>Шаг 2. Сделать Fork репозитория</h2>
+<p>Fork — это копия репозитория тренера в вашем аккаунте. Одна кнопка.</p>
+<ol>
+<li>Зайдите на <a href="https://github.com/mrvolkomorov/telegram-mcp-http">github.com/mrvolkomorov/telegram-mcp-http</a></li>
+<li>В правом верхнем углу нажмите кнопку <strong>Fork</strong></li>
+<li>Нажмите <strong>Create fork</strong></li>
+</ol>
+<p>Готово: у вас есть своя копия по адресу <code>github.com/ВАШ-USERNAME/telegram-mcp-http</code>.</p>
+
+<h2>Шаг 3. Получить api_id и api_hash</h2>
+<p>Эти данные нужны, чтобы сервер мог подключиться к вашему Telegram-аккаунту от вашего имени.</p>
+<ol>
+<li>Зайдите на <a href="https://my.telegram.org">my.telegram.org</a></li>
+<li>Введите номер телефона, привязанный к вашему Telegram</li>
+<li>Введите код подтверждения из Telegram/SMS</li>
+<li>Вы попадёте в раздел «API development tools»</li>
+<li>Заполните: App title = <code>MyMCP</code>, Short name = <code>mymcp</code>, Platform = Desktop</li>
+<li>Нажмите Create application</li>
+<li>Скопируйте <strong>api_id</strong> (число) и <strong>api_hash</strong> (строка букв и цифр)</li>
+</ol>
+<div class="warning-box"><strong>Внимание:</strong> api_hash — секретный ключ. Никому его не передавайте. Скопируйте и сохраните в блокноте.</div>
+
+<h2>Шаг 4. Сгенерировать session string</h2>
+<p>Session string — это «ключ сессии», который связывает сервер с вашим Telegram-аккаунтом. Есть два способа.</p>
+
+<div class="step-box">
+<div class="step-head">Способ А — через Replit (рекомендуется, без установки программ)</div>
+<ol>
+<li>Зайдите на <a href="https://replit.com">replit.com</a> и создайте бесплатный аккаунт (Sign up → GitHub)</li>
+<li>Create Repl → Import from GitHub → вставьте ссылку <code>github.com/ВАШ-USERNAME/telegram-mcp-http</code></li>
+<li>Откройте файл <code>generate_session.py</code></li>
+<li>Замените <code>API_ID = 0</code> и <code>API_HASH = ""</code> на ваши данные из Шага 3</li>
+<li>Нажмите зелёную кнопку <strong>Run</strong></li>
+<li>Введите номер телефона в формате <code>+79001234567</code></li>
+<li>Введите код из Telegram (код НЕ отображается при вводе — это нормально)</li>
+<li>Если включена двухфакторка — введите пароль</li>
+<li>Скопируйте длинную строку (начинается с 1) — это ваш session string</li>
+</ol>
+</div>
+
+<div class="step-box">
+<div class="step-head">Способ Б — локальный (если уже установлен Python)</div>
+<ol>
+<li>Скачайте <code>generate_session.py</code> из репозитория</li>
+<li>Впишите ваши API_ID и API_HASH</li>
+<li>В терминале: <code>python generate_session.py</code></li>
+<li>Далее — как в пунктах 6–9 способа А</li>
+</ol>
+</div>
+
+<h2>Шаг 5. Развернуть на Railway</h2>
+<p>Railway — платформа, где ваш сервер будет работать 24/7. Есть бесплатный тариф ($5 кредитов в месяц).</p>
+<ol>
+<li>Зайдите на <a href="https://railway.com">railway.com</a> → Start a New Project → Login with GitHub</li>
+<li>New Project → Deploy from GitHub repo</li>
+<li>Разрешите Railway доступ к вашему GitHub (Install Railway) — выберите только репозиторий <code>telegram-mcp-http</code></li>
+<li>Нажмите Deploy Now (1–2 минуты)</li>
+<li>Когда зелёный статус: вкладка <strong>Variables</strong></li>
+<li>Добавьте ТРИ переменные:</li>
+</ol>
+<pre><code>TG_API_ID        = ваш api_id (только число, без кавычек)
+TG_API_HASH      = ваш api_hash (строка без кавычек)
+TG_SESSION_STRING = ваш session string (вся длинная строка)</code></pre>
+<ol start="7">
+<li>Railway автоматически перезапустит сервер (30 сек)</li>
+<li>Settings → Networking → <strong>Generate Domain</strong></li>
+<li>Скопируйте адрес вида <code>https://telegram-mcp-http-production.up.railway.app</code></li>
+</ol>
+
+<h2>Проверка работоспособности</h2>
+<p>Откройте в браузере: <code>https://telegram-mcp-http-production.up.railway.app/health</code></p>
+<p>Должно отобразиться: <code>{"status": "ok"}</code></p>
+
+<h2>Подключение к ИИ-клиенту</h2>
+<ol>
+<li>Откройте настройки MCP-серверов</li>
+<li>Добавьте: Name = <code>Telegram MCP</code>, Type = <code>HTTP (Streamable HTTP)</code>, URL = <code>https://ваш-домен/mcp</code></li>
+<li>Сохраните и включите</li>
+</ol>
+<p>В чате с ИИ теперь доступны 6 инструментов: чтение чатов, поиск сообщений, отправка сообщений и др.</p>
+
+<h2>Типичные проблемы</h2>
+<table>
+<tr><th>Проблема</th><th>Решение</th></tr>
+<tr><td>Ошибка 401</td><td>Проверьте TG_API_ID и TG_API_HASH</td></tr>
+<tr><td>Ошибка AUTH_KEY_DUPLICATED</td><td>Сгенерируйте новый session string</td></tr>
+<tr><td>Ошибка 503 / 404</td><td>Подождите 1 мин (сервер запускается)</td></tr>
+<tr><td>Не видит инструменты</td><td>URL должен заканчиваться на /mcp</td></tr>
+</table>
+
+<h2>Безопасность</h2>
+<ul>
+<li>api_hash и session string — секретные. Никому не передавайте</li>
+<li>Храните их в блокноте на компьютере, не в публичных чатах</li>
+<li>Если заподозрили утечку: my.telegram.org → API development tools → Revoke session</li>
+<li>На Railway переменные зашифрованы и не отображаются в логах</li>
+</ul>
+</div>
+<footer class="footer"><p>Курс «ИИ-инструменты для региональной редакции» · Обновлено 10.09.2026</p></footer>
+</div>
+</body>
+</html>
