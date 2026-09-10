@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Карта MCP-серверов | Мануалы</title>
+<style>
+:root{--accent:#6366f1;--accent-dark:#4f46e5;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #c7d2fe}.content h2:first-child{margin-top:0}.content h3{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--accent-dark);display:flex;align-items:center;gap:8px}.content .server-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--accent);color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0}.content p{margin-bottom:12px;font-size:14px}.content p.sub{color:var(--hint);font-size:13px;margin-top:-6px;margin-bottom:10px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px}.content .highlight-box{background:#eef2ff;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fef2f2;border-left:3px solid #ef4444;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .info-box{background:#f0fdf4;border-left:3px solid #22c55e;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}
+.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 12px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 12px;border:1px solid var(--border);vertical-align:top}
+.server-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0;border-left:4px solid var(--accent)}.server-block h3{margin-top:0}.server-block .caps{font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.5px;margin:16px 0 6px}.server-block .caps:first-child{margin-top:0}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}
+@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h3{color:var(--accent)}.content h2{border-bottom-color:#333}.server-block{background:#1e1a2e;border-color:#333}.highlight-box{background:#1e1a3a}.warning-box{background:#1a0a0a}.info-box{background:#0a1a0a}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">MCP-серверы</div>
+<h1>Карта MCP-серверов</h1>
+<div class="meta">Занятие 1 · v1.2 · 10.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<p>MCP (Model Context Protocol) — универсальный слот, через который ваш ИИ-клиент (LobeHub, Cherry Studio, DeepChat) подключается к внешним сервисам: Telegram, TGStat, поиску в интернете, Google-документам.</p>
+<p>Вместо того чтобы писать отдельный код для каждого сервиса — вы один раз настраиваете MCP-сервер и пользуетесь им из любого диалога с ИИ.</p>
+
+<h2>Карта на одном экране</h2>
+<table>
+<tr><th>Сервер</th><th>Что даёт</th><th>Где запущен</th><th>Нужно для</th></tr>
+<tr><td><strong>Telegram MCP</strong></td><td>Читает чаты, ищет и отправляет сообщения</td><td>Railway (личный)</td><td>Дашборды каналов, поиск инфоповодов, мониторинг</td></tr>
+<tr><td><strong>TGStat MCP</strong></td><td>Аналитика каналов: подписчики, охваты, ERR, тренды</td><td>Railway (личный)</td><td>Конкурентный анализ, мониторинг трендов</td></tr>
+<tr><td><strong>Firecrawl</strong></td><td>Скрапинг сайтов, веб-поиск, сбор данных</td><td>Облако (API-ключ)</td><td>Сбор информации из веб-источников</td></tr>
+<tr><td><strong>Tavily</strong></td><td>ИИ-поиск, извлечение контента, глубокое исследование</td><td>Облако (API-ключ)</td><td>Поиск инфоповодов, факт-чекинг</td></tr>
+<tr><td><strong>Composio</strong></td><td>Мост к 500+ приложениям (Google, Slack, GitHub)</td><td>Облако (аккаунт)</td><td>Запись в таблицы, документы, письма</td></tr>
+</table>
+
+<!-- Server 1 -->
+<div class="server-block">
+<h3><span class="server-num">1</span> Telegram MCP (MTProto / Telethon)</h3>
+<div class="caps">Что умеет</div>
+<ul>
+<li><code>telegram_list_chats</code> — список чатов и каналов</li>
+<li><code>telegram_get_messages</code> — сообщения из чата/канала</li>
+<li><code>telegram_search_messages</code> — поиск по всем чатам</li>
+<li><code>telegram_send_message</code> — отправка сообщения</li>
+<li><code>telegram_get_me</code> — инфо об аккаунте</li>
+<li><code>telegram_get_contacts</code> — контакты</li>
+</ul>
+<div class="caps">Запуск</div>
+<p>На Railway. Каждый участник разворачивает свой экземпляр. Нужны: GitHub, Fork репозитория, api_id/api_hash с my.telegram.org, session string (через Replit), 3 переменные на Railway.</p>
+<div class="caps">Подключение</div>
+<p><code>Name: Telegram MCP · Type: HTTP (Streamable HTTP) · URL: https://[домен].up.railway.app/mcp</code></p>
+</div>
+
+<!-- Server 2 -->
+<div class="server-block">
+<h3><span class="server-num">2</span> TGStat MCP</h3>
+<div class="caps">Что умеет (20 инструментов)</div>
+<ul>
+<li><code>search_channels</code> / <code>get_channel</code> — поиск и карточка канала</li>
+<li><code>get_channel_stats</code> — охваты, ERR, просмотры</li>
+<li><code>get_channel_posts</code> — посты канала</li>
+<li><code>search_posts</code> — поиск постов по словам</li>
+<li><code>get_word_mentions</code> — тренды ключевых слов</li>
+<li><code>compare_channels</code> — сравнение каналов</li>
+<li><code>get_channel_subscribers</code> / <code>get_channel_views</code> / <code>get_channel_err</code> — динамика</li>
+<li><code>get_channel_mentions</code> / <code>get_channel_forwards</code> — упоминания и пересылки</li>
+</ul>
+<div class="caps">Запуск</div>
+<p>На Railway. Деплой <code>mrvolkomorov/tgstat-mcp-http</code> (без Fork). Нужен TGSTAT_TOKEN с api.tgstat.ru.</p>
+<div class="caps">Подключение</div>
+<p><code>Name: TGStat MCP · Type: HTTP (Streamable HTTP) · URL: https://[домен].up.railway.app/mcp</code></p>
+</div>
+
+<!-- Server 3 -->
+<div class="server-block">
+<h3><span class="server-num">3</span> Firecrawl</h3>
+<div class="caps">Что умеет</div>
+<ul>
+<li><code>firecrawl_scrape</code> — извлечение содержимого страницы</li>
+<li><code>firecrawl_search</code> — веб-поиск</li>
+<li><code>firecrawl_crawl</code> — обход сайта по ссылкам</li>
+<li><code>firecrawl_map</code> — карта ссылок сайта</li>
+<li><code>firecrawl_extract</code> — структурированные данные</li>
+<li><code>firecrawl_parse</code> — парсинг PDF, DOCX и др.</li>
+</ul>
+<div class="caps">Запуск</div>
+<p>Облачный сервис. Регистрация на firecrawl.dev. Бесплатный тариф — 500 страниц/мес.</p>
+<div class="caps">Подключение</div>
+<p><code>URL: https://api.firecrawl.dev/mcp</code> + API-ключ в заголовке. Или через Composio.</p>
+</div>
+
+<!-- Server 4 -->
+<div class="server-block">
+<h3><span class="server-num">4</span> Tavily</h3>
+<div class="caps">Что умеет</div>
+<ul>
+<li><code>tavily_search</code> — поиск в интернете (фильтры по времени, доменам, стране)</li>
+<li><code>tavily_extract</code> — извлечение содержимого по URL</li>
+<li><code>tavily_crawl</code> — обход сайта</li>
+<li><code>tavily_map</code> — карта ссылок</li>
+<li><code>tavily_research</code> — глубокое исследование темы</li>
+</ul>
+<div class="caps">Запуск</div>
+<p>Облачный сервис. Регистрация на tavily.com. Бесплатный тариф — 1000 запросов/мес.</p>
+<div class="caps">Подключение</div>
+<p><code>URL: https://api.tavily.com/mcp</code> + API-ключ. Или через Composio.</p>
+</div>
+
+<!-- Server 5 -->
+<div class="server-block">
+<h3><span class="server-num">5</span> Composio (Google-сервисы и 500+ приложений)</h3>
+<div class="caps">Что умеет (основное для курса)</div>
+<ul>
+<li>Google Sheets — чтение и запись таблиц (лента заметок, дашборды)</li>
+<li>Google Docs — создание и редактирование документов</li>
+<li>Gmail — отправка и чтение писем</li>
+<li>Google Drive — загрузка и управление файлами</li>
+<li>Google Calendar — работа с календарём</li>
+<li>Slack, GitHub, Telegram Bot и 500+ других приложений</li>
+</ul>
+<div class="caps">Запуск</div>
+<p>Облачный сервис. Регистрация на composio.dev. Подключение приложений через OAuth (Google — один клик).</p>
+<div class="caps">Подключение</div>
+<p>URL из Composio + session_id. Для Google Sheets дополнительно: авторизация через Sign In with Google.</p>
+</div>
+
+<h2>Сводная таблица подключения</h2>
+<table>
+<tr><th>Сервер</th><th>Тип</th><th>Что вводить</th></tr>
+<tr><td>Telegram MCP</td><td>HTTP URL</td><td><code>https://[домен].up.railway.app/mcp</code></td></tr>
+<tr><td>TGStat MCP</td><td>HTTP URL</td><td><code>https://[домен].up.railway.app/mcp</code></td></tr>
+<tr><td>Firecrawl</td><td>HTTP URL + Key</td><td><code>https://api.firecrawl.dev/mcp</code> + ключ</td></tr>
+<tr><td>Tavily</td><td>HTTP URL + Key</td><td><code>https://api.tavily.com/mcp</code> + ключ</td></tr>
+<tr><td>Composio</td><td>HTTP URL + Session</td><td>URL из Composio + session_id</td></tr>
+</table>
+
+<h2>Что к какому блоку</h2>
+<table>
+<tr><th>Блок занятия</th><th>Какие MCP нужны</th></tr>
+<tr><td>Блок 1. Дашборд канала</td><td>Telegram MCP</td></tr>
+<tr><td>Блок 2. Анализ конкурентов</td><td>Telegram MCP + TGStat MCP</td></tr>
+<tr><td>Блок 3. Эфир → карточки</td><td>Deepgram (веб-интерфейс или API)</td></tr>
+<tr><td>Блок 4. n8n-сценарий</td><td>LLM (OpenRouter/AiTunnel) + Google Sheets (Composio)</td></tr>
+<tr><td>Домашнее задание</td><td>Любой в зависимости от задачи</td></tr>
+</table>
+
+<h2>Правила безопасности</h2>
+<ul>
+<li><strong>Telegram MCP:</strong> session string = доступ к вашему аккаунту. Храните в Railway Variables (зашифровано), никому не передавайте</li>
+<li><strong>TGStat MCP:</strong> токен привязан к подписке. Не публикуйте в открытых чатах</li>
+<li><strong>Firecrawl / Tavily:</strong> API-ключи храните в настройках ИИ-клиента. Не вставляйте в промпты</li>
+<li><strong>Composio:</strong> отзывайте доступ к приложениям, если больше не используете</li>
+<li><strong>Общее правило:</strong> MCP-сервер даёт ИИ доступ к вашим данным. Подключайте только те серверы, которые реально нужны для задачи</li>
+</ul>
+
+<div class="info-box"><strong>Быстрый старт на сегодня:</strong> Telegram MCP — уже развёрнут на занятии. TGStat MCP — разверните по мануалу (10 мин). Firecrawl / Tavily — API-ключ тренера на занятии, свой дома. Composio — для Google Sheets используется встроенная авторизация n8n.</div>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 10.09.2026</p></footer>
+</div>
+</body>
+</html>
