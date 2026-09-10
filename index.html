@@ -181,6 +181,7 @@
         .card-icon.n8n { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
         .card-icon.template { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
 .card-icon.prompts { background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%); }
+        .card-icon.reference { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
         .card-info { flex: 1; min-width: 0; }
         .card-title {
             font-size: 15px;
@@ -206,6 +207,7 @@
         .badge-n8n { background: #f0fdf4; color: #16a34a; }
         .badge-template { background: #faf5ff; color: #9333ea; }
 .badge-prompts { background: #f5f3ff; color: #7e22ce; }
+        .badge-reference { background: #e0f2fe; color: #0284c7; }
         .card-desc {
             font-size: 13px;
             color: var(--tg-theme-hint);
@@ -274,8 +276,8 @@
         </header>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-number" id="totalCount">7</div><div class="stat-label">Мануалов</div></div>
-            <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Категорий</div></div>
+            <div class="stat-item"><div class="stat-number" id="totalCount">8</div><div class="stat-label">Мануалов</div></div>
+            <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Категорий</div></div>
             <div class="stat-item"><div class="stat-number">v1.2</div><div class="stat-label">Версия</div></div>
         </div>
 
@@ -288,6 +290,7 @@
                 <button class="filter-tab" data-filter="n8n">n8n</button>
                 <button class="filter-tab" data-filter="prompts">Промпты</button>
                 <button class="filter-tab" data-filter="template">Шаблоны</button>
+                <button class="filter-tab" data-filter="reference">Справочник</button>
             </div>
         </div>
 
@@ -307,7 +310,8 @@
             {id:'track-a',title:'Импорт шаблона Трек А в n8n (v1.2)',description:'Импорт готового workflow для мониторинга Telegram-каналов и автоматического репоста. Настройка credentials, подключение MCP-серверов, кастомизация фильтров.',url:'track-a.html',category:'template',icon:'⚡',iconClass:'template',badge:'Шаблон',badgeClass:'badge-template',tags:['Workflow','Мониторинг','Автоматизация']},
             {id:'cheat-sheet-prompts',title:'Библиотека аналитических промптов (14 шт.)',description:'Cheat-sheet с 14 готовыми шаблонами для SMM и редакции. Дашборды, конкурентный анализ, рерайт, адаптация под площадки, инфоповоды, дайджесты.',url:'cheat-sheet-prompts.html',category:'prompts',icon:'📝',iconClass:'prompts',badge:'Промпты',badgeClass:'badge-prompts',tags:['Шпаргалка','SMM','Аналитика','Шаблоны']},
             {id:'mcp-map',title:'Карта MCP-серверов',description:'Полная карта всех MCP-серверов курса: Telegram MCP, TGStat MCP, Firecrawl, Tavily, Composio. Что каждый умеет, как запустить, как подключить к ИИ-клиенту, что к какому блоку относится.',url:'mcp-map.html',category:'mcp',icon:'🗺️',iconClass:'mcp',badge:'MCP',badgeClass:'badge-mcp',tags:['Справочник','Карта','Все сервера']},
-            {id:'n8n-checklist',title:'Чек-лист запуска n8n (8 шагов)',description:'От регистрации до первого запуска. Подключение LLM и Google Sheets, импорт шаблона, замена 3 значений, Execute и активация. Таблица типичных проблем.',url:'n8n-checklist.html',category:'n8n',icon:'🚀',iconClass:'n8n',badge:'n8n',badgeClass:'badge-n8n',tags:['Чек-лист','Запуск','Workflow']}
+            {id:'n8n-checklist',title:'Чек-лист запуска n8n (8 шагов)',description:'От регистрации до первого запуска. Подключение LLM и Google Sheets, импорт шаблона, замена 3 значений, Execute и активация. Таблица типичных проблем.',url:'n8n-checklist.html',category:'n8n',icon:'🚀',iconClass:'n8n',badge:'n8n',badgeClass:'badge-n8n',tags:['Чек-лист','Запуск','Workflow']},
+            {id:'glossary',title:'Глоссарий — базовые понятия курса',description:'Словарь терминов курса: LLM, MCP, агенты, n8n, платформы, метрики, контент и безопасность. Более 50 терминов с краткими определениями.',url:'glossary.html',category:'reference',icon:'📖',iconClass:'reference',badge:'Словарь',badgeClass:'badge-reference',tags:['Глоссарий','Справочник','Термины']}
         ];
 
         function renderManuals(f){f=f||'all';var g=document.getElementById('manualsGrid'),h=f==='all'?manuals:manuals.filter(function(m){return m.category===f});if(!h.length){g.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><p class="empty-text">В этой категории пока нет мануалов</p></div>';return}g.innerHTML=h.map(function(m){return '<article class="manual-card" onclick="openManual(\''+m.url+'\')"><div class="card-header"><div class="card-icon '+m.iconClass+'">'+m.icon+'</div><div class="card-info"><h3 class="card-title">'+m.title+'</h3><div class="card-meta"><span class="card-badge '+m.badgeClass+'">'+m.badge+'</span></div></div></div><p class="card-desc">'+m.description+'</p><div class="card-footer"><div class="card-tags">'+m.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div><button class="open-btn" onclick="event.stopPropagation();openManual(\''+m.url+'\')">Открыть ↗</button></div></article>'}).join('')}
