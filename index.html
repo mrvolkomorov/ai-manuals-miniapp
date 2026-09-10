@@ -38,6 +38,7 @@
             overflow-x: hidden;
         }
         .app-container { max-width: 480px; margin: 0 auto; padding-bottom: 80px; }
+
         .header {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: white;
@@ -64,61 +65,116 @@
         }
         .header-content { position: relative; z-index: 1; }
         .header-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-            padding: 6px 12px; border-radius: 20px;
-            font-size: 12px; font-weight: 500; margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 12px;
         }
         .header-badge .dot {
-            width: 6px; height: 6px; background: #4ade80;
-            border-radius: 50%; animation: pulse 2s infinite;
+            width: 6px; height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
         .header h1 { font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
         .header p { font-size: 14px; opacity: 0.9; line-height: 1.4; }
-        .stats-bar { display: flex; gap: 16px; margin: -18px 20px 0; position: relative; z-index: 2; }
+
+        .stats-bar {
+            display: flex;
+            gap: 16px;
+            margin: -18px 20px 0;
+            position: relative;
+            z-index: 2;
+        }
         .stat-item {
-            flex: 1; background: var(--surface);
-            border-radius: var(--radius-md); padding: 14px 16px;
-            text-align: center; box-shadow: var(--shadow-md);
+            flex: 1;
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
         }
         .stat-number { font-size: 24px; font-weight: 800; color: var(--accent); line-height: 1; }
         .stat-label { font-size: 11px; color: var(--tg-theme-hint); margin-top: 4px; font-weight: 500; }
+
         .filter-section { padding: 20px 20px 0; }
         .filter-label {
-            font-size: 13px; font-weight: 600; color: var(--tg-theme-hint);
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--tg-theme-hint);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
         .filter-tabs {
-            display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;
-            -ms-overflow-style: none; scrollbar-width: none;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .filter-tabs::-webkit-scrollbar { display: none; }
         .filter-tab {
-            flex-shrink: 0; padding: 8px 16px; border-radius: 20px;
-            font-size: 13px; font-weight: 600; border: 1.5px solid var(--border);
-            background: var(--surface); color: var(--tg-theme-text);
-            cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+            flex-shrink: 0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            color: var(--tg-theme-text);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
         }
         .filter-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
         .filter-tab:not(.active):hover { border-color: var(--accent-light); color: var(--accent); }
+
         .cards-section { padding: 16px 20px 0; }
-        .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         .cards-grid { display: flex; flex-direction: column; gap: 12px; }
+
         .manual-card {
-            background: var(--surface); border-radius: var(--radius-lg);
-            padding: 18px; border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm); transition: all 0.2s ease;
-            cursor: pointer; position: relative; overflow: hidden;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         .manual-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--accent-light); }
         .manual-card:active { transform: scale(0.98); }
         .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
         .card-icon {
-            width: 48px; height: 48px; border-radius: var(--radius-md);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; flex-shrink: 0;
+            width: 48px; height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
         }
         .card-icon.mcp { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
         .card-icon.api { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
@@ -126,33 +182,69 @@
         .card-icon.template { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
         .card-info { flex: 1; min-width: 0; }
         .card-title {
-            font-size: 15px; font-weight: 700; line-height: 1.3; margin-bottom: 4px;
-            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .card-badge { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .card-badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
         .badge-mcp { background: #eff6ff; color: #2563eb; }
         .badge-api { background: #fffbeb; color: #d97706; }
         .badge-n8n { background: #f0fdf4; color: #16a34a; }
         .badge-template { background: #faf5ff; color: #9333ea; }
         .card-desc {
-            font-size: 13px; color: var(--tg-theme-hint); line-height: 1.5; margin-bottom: 14px;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+            font-size: 13px;
+            color: var(--tg-theme-hint);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .card-footer { display: flex; align-items: center; justify-content: space-between; }
         .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        .tag { font-size: 11px; padding: 4px 8px; background: var(--tg-theme-secondary-bg); border-radius: 6px; color: var(--tg-theme-hint); }
+        .tag {
+            font-size: 11px;
+            padding: 4px 8px;
+            background: var(--tg-theme-secondary-bg);
+            border-radius: 6px;
+            color: var(--tg-theme-hint);
+        }
         .open-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 16px; background: var(--accent); color: white;
-            border: none; border-radius: 8px; font-size: 13px;
-            font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
         .open-btn:hover { background: var(--accent-dark); }
+
         .empty-state { text-align: center; padding: 40px 20px; }
         .empty-icon { font-size: 48px; margin-bottom: 12px; }
         .empty-text { font-size: 14px; color: var(--tg-theme-hint); }
+
         .footer { text-align: center; padding: 24px 20px 32px; font-size: 12px; color: var(--tg-theme-hint); opacity: 0.7; }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -162,6 +254,7 @@
         .manual-card:nth-child(2) { animation-delay: 0.1s; }
         .manual-card:nth-child(3) { animation-delay: 0.15s; }
         .manual-card:nth-child(4) { animation-delay: 0.2s; }
+
         @media (prefers-color-scheme: dark) {
             :root { --surface: #1e1e1e; --surface-hover: #2a2a2a; --border: #333333; }
         }
@@ -177,11 +270,13 @@
                 <p>Медиахолдинг Шкулева · Региональная редакция</p>
             </div>
         </header>
+
         <div class="stats-bar">
             <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Мануалов</div></div>
-            <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Категорий</div></div>
+            <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Категорий</div></div>
             <div class="stat-item"><div class="stat-number">v1.2</div><div class="stat-label">Версия</div></div>
         </div>
+
         <div class="filter-section">
             <div class="filter-label">Категории</div>
             <div class="filter-tabs">
@@ -192,18 +287,38 @@
                 <button class="filter-tab" data-filter="template">Шаблоны</button>
             </div>
         </div>
+
         <section class="cards-section">
             <h2 class="section-title">📚 Доступные мануалы</h2>
             <div class="cards-grid" id="manualsGrid"></div>
         </section>
+
         <footer class="footer"><p>Обновлено: 10 сентября 2026</p></footer>
     </div>
+
     <script>
-        var manuals=[{id:'tgstat-mcp',title:'Развёртывание TGStat-MCP на Railway',description:'Пошаговое руководство по деплою MCP-сервера для анализа Telegram-каналов. Получение токена TGStat, настройка переменных окружения, проверка работоспособности.',url:'https://docs.google.com/document/d/17qDStJdohSEWymPLbeY6uczflLxj_TVaeSq_UkM0ogQ/edit',category:'mcp',icon:'📊',iconClass:'mcp',badge:'TGStat',badgeClass:'badge-mcp',tags:['Railway','MCP','Аналитика']},{id:'telegram-mcp',title:'Развёртывание Telegram-MCP на Railway',description:'Установка и настройка MCP-сервера для работы с Telegram API. Создание приложения на my.telegram.org, получение api_id/api_hash, генерация session string.',url:'https://docs.google.com/document/d/1zHVttnOUrm5diruD0rXQI-4xEJ1sHp6HUZ_wp7WoWIc/edit',category:'mcp',icon:'💬',iconClass:'mcp',badge:'Telegram',badgeClass:'badge-mcp',tags:['MTProto','GitHub','Replit']},{id:'api-keys',title:'API-ключи и бюджетные модели для n8n',description:'Подключение нейросетей через OpenRouter и AiTunnel. Сравнение моделей (DeepSeek, Qwen, GLM, Claude), настройка кредитов, безопасное хранение ключей.',url:'https://docs.google.com/document/d/1GqCH5KSjE3CvP914iZwjudG5E9itslynk36eN495yxo/edit',category:'api',icon:'🔑',iconClass:'api',badge:'API',badgeClass:'badge-api',tags:['OpenRouter','AiTunnel','Модели']},{id:'track-a-template',title:'Импорт шаблона Трек А в n8n (v1.2)',description:'Импорт готового workflow для мониторинга Telegram-каналов и автоматического репоста. Настройка credentials, подключение MCP-серверов, кастомизация фильтров.',url:'https://docs.google.com/document/d/19yUZJZnaMp1c_9d3epUVTeLDHq9f85CsrdxI60TdC4M/edit',category:'template',icon:'⚡',iconClass:'template',badge:'Шаблон',badgeClass:'badge-template',tags:['Workflow','Мониторинг','Автоматизация']}];
+        var manuals=[
+            {id:'tgstat-mcp',title:'Развёртывание TGStat-MCP на Railway',description:'Пошаговое руководство по деплою MCP-сервера для анализа Telegram-каналов. Получение токена TGStat, настройка переменных окружения, проверка работоспособности.',url:'tgstat-mcp.html',category:'mcp',icon:'📊',iconClass:'mcp',badge:'TGStat',badgeClass:'badge-mcp',tags:['Railway','MCP','Аналитика']},
+            {id:'telegram-mcp',title:'Развёртывание Telegram-MCP на Railway',description:'Установка и настройка MCP-сервера для работы с Telegram API. Создание приложения на my.telegram.org, получение api_id/api_hash, генерация session string.',url:'telegram-mcp.html',category:'mcp',icon:'💬',iconClass:'mcp',badge:'Telegram',badgeClass:'badge-mcp',tags:['MTProto','GitHub','Replit']},
+            {id:'api-keys',title:'API-ключи и бюджетные модели для n8n',description:'Подключение нейросетей через OpenRouter и AiTunnel. Сравнение моделей (DeepSeek, Qwen, GLM, Claude), настройка кредитов, безопасное хранение ключей.',url:'api-keys.html',category:'api',icon:'🔑',iconClass:'api',badge:'API',badgeClass:'badge-api',tags:['OpenRouter','AiTunnel','Модели']},
+            {id:'track-a',title:'Импорт шаблона Трек А в n8n (v1.2)',description:'Импорт готового workflow для мониторинга Telegram-каналов и автоматического репоста. Настройка credentials, подключение MCP-серверов, кастомизация фильтров.',url:'track-a.html',category:'template',icon:'⚡',iconClass:'template',badge:'Шаблон',badgeClass:'badge-template',tags:['Workflow','Мониторинг','Автоматизация']}
+        ];
+
         function renderManuals(f){f=f||'all';var g=document.getElementById('manualsGrid'),h=f==='all'?manuals:manuals.filter(function(m){return m.category===f});if(!h.length){g.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><p class="empty-text">В этой категории пока нет мануалов</p></div>';return}g.innerHTML=h.map(function(m){return '<article class="manual-card" onclick="openManual(\''+m.url+'\')"><div class="card-header"><div class="card-icon '+m.iconClass+'">'+m.icon+'</div><div class="card-info"><h3 class="card-title">'+m.title+'</h3><div class="card-meta"><span class="card-badge '+m.badgeClass+'">'+m.badge+'</span></div></div></div><p class="card-desc">'+m.description+'</p><div class="card-footer"><div class="card-tags">'+m.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div><button class="open-btn" onclick="event.stopPropagation();openManual(\''+m.url+'\')">Открыть ↗</button></div></article>'}).join('')}
-        function openManual(u){if(window.Telegram&&window.Telegram.WebApp){window.Telegram.WebApp.openLink(u,{try_instant_view:false})}else{window.open(u,'_blank')}}
+
+        function openManual(url) {
+            var base = window.location.href.replace(/index\.html$/, '');
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.openLink(base + url, { try_instant_view: false });
+            } else {
+                window.open(base + url, '_blank');
+            }
+        }
+
         document.querySelectorAll('.filter-tab').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.filter-tab').forEach(function(x){x.classList.remove('active')});t.classList.add('active');renderManuals(t.dataset.filter)})});
+
         function initTelegram(){if(window.Telegram&&window.Telegram.WebApp){var tg=window.Telegram.WebApp;tg.ready();tg.expand();if(tg.colorScheme==='dark'){document.body.classList.add('tg-theme-dark')}tg.MainButton.setText('На главную');tg.MainButton.onClick(function(){tg.close()})}}
+
         document.addEventListener('DOMContentLoaded',function(){renderManuals();initTelegram()});
     </script>
 </body>
