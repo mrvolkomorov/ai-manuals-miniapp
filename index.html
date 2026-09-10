@@ -180,6 +180,7 @@
         .card-icon.api { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
         .card-icon.n8n { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
         .card-icon.template { background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); }
+.card-icon.prompts { background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%); }
         .card-info { flex: 1; min-width: 0; }
         .card-title {
             font-size: 15px;
@@ -204,6 +205,7 @@
         .badge-api { background: #fffbeb; color: #d97706; }
         .badge-n8n { background: #f0fdf4; color: #16a34a; }
         .badge-template { background: #faf5ff; color: #9333ea; }
+.badge-prompts { background: #f5f3ff; color: #7e22ce; }
         .card-desc {
             font-size: 13px;
             color: var(--tg-theme-hint);
@@ -272,8 +274,8 @@
         </header>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Мануалов</div></div>
-            <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Категорий</div></div>
+            <div class="stat-item"><div class="stat-number" id="totalCount">5</div><div class="stat-label">Мануалов</div></div>
+            <div class="stat-item"><div class="stat-number">5</div><div class="stat-label">Категорий</div></div>
             <div class="stat-item"><div class="stat-number">v1.2</div><div class="stat-label">Версия</div></div>
         </div>
 
@@ -284,6 +286,7 @@
                 <button class="filter-tab" data-filter="mcp">MCP-серверы</button>
                 <button class="filter-tab" data-filter="api">API и модели</button>
                 <button class="filter-tab" data-filter="n8n">n8n</button>
+                <button class="filter-tab" data-filter="prompts">Промпты</button>
                 <button class="filter-tab" data-filter="template">Шаблоны</button>
             </div>
         </div>
@@ -301,7 +304,8 @@
             {id:'tgstat-mcp',title:'Развёртывание TGStat-MCP на Railway',description:'Пошаговое руководство по деплою MCP-сервера для анализа Telegram-каналов. Получение токена TGStat, настройка переменных окружения, проверка работоспособности.',url:'tgstat-mcp.html',category:'mcp',icon:'📊',iconClass:'mcp',badge:'TGStat',badgeClass:'badge-mcp',tags:['Railway','MCP','Аналитика']},
             {id:'telegram-mcp',title:'Развёртывание Telegram-MCP на Railway',description:'Установка и настройка MCP-сервера для работы с Telegram API. Создание приложения на my.telegram.org, получение api_id/api_hash, генерация session string.',url:'telegram-mcp.html',category:'mcp',icon:'💬',iconClass:'mcp',badge:'Telegram',badgeClass:'badge-mcp',tags:['MTProto','GitHub','Replit']},
             {id:'api-keys',title:'API-ключи и бюджетные модели для n8n',description:'Подключение нейросетей через OpenRouter и AiTunnel. Сравнение моделей (DeepSeek, Qwen, GLM, Claude), настройка кредитов, безопасное хранение ключей.',url:'api-keys.html',category:'api',icon:'🔑',iconClass:'api',badge:'API',badgeClass:'badge-api',tags:['OpenRouter','AiTunnel','Модели']},
-            {id:'track-a',title:'Импорт шаблона Трек А в n8n (v1.2)',description:'Импорт готового workflow для мониторинга Telegram-каналов и автоматического репоста. Настройка credentials, подключение MCP-серверов, кастомизация фильтров.',url:'track-a.html',category:'template',icon:'⚡',iconClass:'template',badge:'Шаблон',badgeClass:'badge-template',tags:['Workflow','Мониторинг','Автоматизация']}
+            {id:'track-a',title:'Импорт шаблона Трек А в n8n (v1.2)',description:'Импорт готового workflow для мониторинга Telegram-каналов и автоматического репоста. Настройка credentials, подключение MCP-серверов, кастомизация фильтров.',url:'track-a.html',category:'template',icon:'⚡',iconClass:'template',badge:'Шаблон',badgeClass:'badge-template',tags:['Workflow','Мониторинг','Автоматизация']},
+            {id:'cheat-sheet-prompts',title:'Библиотека аналитических промптов (14 шт.)',description:'Cheat-sheet с 14 готовыми шаблонами для SMM и редакции. Дашборды, конкурентный анализ, рерайт, адаптация под площадки, инфоповоды, дайджесты.',url:'cheat-sheet-prompts.html',category:'prompts',icon:'📝',iconClass:'prompts',badge:'Промпты',badgeClass:'badge-prompts',tags:['Шпаргалка','SMM','Аналитика','Шаблоны']}
         ];
 
         function renderManuals(f){f=f||'all';var g=document.getElementById('manualsGrid'),h=f==='all'?manuals:manuals.filter(function(m){return m.category===f});if(!h.length){g.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><p class="empty-text">В этой категории пока нет мануалов</p></div>';return}g.innerHTML=h.map(function(m){return '<article class="manual-card" onclick="openManual(\''+m.url+'\')"><div class="card-header"><div class="card-icon '+m.iconClass+'">'+m.icon+'</div><div class="card-info"><h3 class="card-title">'+m.title+'</h3><div class="card-meta"><span class="card-badge '+m.badgeClass+'">'+m.badge+'</span></div></div></div><p class="card-desc">'+m.description+'</p><div class="card-footer"><div class="card-tags">'+m.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div><button class="open-btn" onclick="event.stopPropagation();openManual(\''+m.url+'\')">Открыть ↗</button></div></article>'}).join('')}
