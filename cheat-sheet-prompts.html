@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Cheat-sheet: 14 промптов | Мануалы</title>
 <style>
-:root{--accent:#a855f7;--accent-dark:#7e22ce;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #e9d5ff}.content h2:first-child{margin-top:0}.content h3{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--accent-dark);display:flex;align-items:center;gap:8px}.content .prompt-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:700;flex-shrink:0}.content p{margin-bottom:12px;font-size:14px}.content p.sub{color:var(--hint);font-size:13px;margin-top:-6px;margin-bottom:10px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code,.content pre{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px}.content code{padding:2px 6px}.content pre{padding:14px 16px;margin:12px 0 20px;overflow-x:auto;line-height:1.5;border:1px solid var(--border)}.content pre code{padding:0;background:none}.content .highlight-box{background:#faf5ff;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.prompt-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin:20px 0;border-left:4px solid var(--accent)}.prompt-block .label{font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}.prompt-block .prompt-text{white-space:pre-wrap;font-size:13px;line-height:1.6;color:var(--text)}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h3{color:var(--accent)}.highlight-box,.prompt-block{background:#1e1a2e;border-color:#333}.content pre{background:#1e1a2e;border-color:#333}.content h2{border-bottom-color:#333}}</style>
+:root{--accent:#a855f7;--accent-dark:#7e22ce;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #e9d5ff}.content h2:first-child{margin-top:0}.content h3{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--accent-dark);display:flex;align-items:center;gap:8px}.content .prompt-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:700;flex-shrink:0}.content p{margin-bottom:12px;font-size:14px}.content p.sub{color:var(--hint);font-size:13px;margin-top:-6px;margin-bottom:10px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px}.content .highlight-box{background:#faf5ff;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.prompt-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin:20px 0;border-left:4px solid var(--accent)}.prompt-block .label{font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}.prompt-block .prompt-text{white-space:pre-wrap;font-size:13px;line-height:1.6;color:var(--text)}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h3{color:var(--accent)}.highlight-box,.prompt-block{background:#1e1a2e;border-color:#333}.content h2{border-bottom-color:#333}}</style>
 </head>
 <body>
 <div class="container">
@@ -15,12 +15,77 @@
 <h1>Библиотека аналитических промптов</h1>
 <div class="meta">Cheat-sheet · 14 шаблонов · v1.2 · 10.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
 </header>
-
 <div class="content">
 <p>14 готовых шаблонов для SMM и редакции. Все промпты построены по структуре <strong>Роль → Задача → Данные → Формат → Контекст</strong>.</p>
 <p>Подставляйте свои каналы, темы и ключевые слова в места <code>[В СКОБКАХ]</code>.</p>
-
 <div class="highlight-box"><strong>Как пользоваться:</strong> копируйте промпт в свой ИИ-клиент (LobeHub, ChatGPT, DeepSeek) — начинайте новый чат для каждого промпта. Для TGStat-промптов нужен запущенный MCP-сервер TGStat. Промпты можно комбинировать.</div>
+
+<h3><span class="prompt-num">1</span> Дашборд своего канала (динамика + обсуждения)</h3>
+<p class="sub">Блок 1 занятия. Аналитический отчёт по вашему Telegram-каналу.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. Через MCP Telegram возьми посты канала [КАНАЛ] за последние 30 дней. Сведи в таблицу: тема / формат / охваты / реакции / комментарии. Выдели топ-5 и дно-5 по охватам. Для топа и дна — по 1 гипотезе «почему так».</div></div>
+
+<h3><span class="prompt-num">2</span> Конкурентный анализ (MCP + TGStat)</h3>
+<p class="sub">Блок 2 занятия. Сравнение «мы vs конкуренты» с цифрами.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. Через MCP Telegram возьми посты каналов [КАНАЛ_1] и [КАНАЛ_2] за последние 30 дней. Через TGStat получи динамику подписчиков за 6 месяцев, средний охват поста, ERR по каждому каналу. Сведи в сравнительную таблицу: тематические доли, форматы, частота постов, охваты. Выдели, что у конкурента растёт, а что падает.</div></div>
+
+<h3><span class="prompt-num">3</span> Гипотеза «Что сработало / что провалилось»</h3>
+<p class="sub">Формула гипотезы для еженедельного анализа.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. По дашборду моего канала за последние 30 дней: 1) Выдели 2 публикации с максимальными охватами и 2 с минимальными. 2) Сравни их по: теме, формату, времени публикации, длине текста, наличию визуала, заголовку. 3) Сформулируй гипотезу по формуле: «Публикации с [X] получают в N раз больше охватов, чем [Y], потому что [ГИПОТЕЗА]».</div></div>
+
+<h3><span class="prompt-num">4</span> Эфир/видео в серию карточек</h3>
+<p class="sub">Одна запись 5 готовых постов.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Вот расшифровка эфира или видео (15 мин). Выдели 5 самостоятельных мыслей. Каждую оформи карточкой Telegram: заголовок ≤6 слов, 3-5 строк текста, цитата спикера. Плюс один длинный пост-колонку (700-1000 знаков). Шаг 2: к самой сильной карточке — короткий анонс (2-3 предложения) со ссылкой; к длинному посту — версия без воды минус 40%.</div></div>
+
+<h3><span class="prompt-num">5</span> Анонс со ссылкой на полный материал</h3>
+<p class="sub">Короткий промпт для быстрого анонса.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — SMM-редактор. У меня есть материал на тему [ТЕМА]. Напиши короткий анонс (2-3 предложения), который: даёт понять о чём материал; объясняет кому будет полезно; заканчивается мягким CTA. Варианты: короткий (до 200 зн.), средний (до 500 зн.), с цитатой автора.</div></div>
+
+<h3><span class="prompt-num">6</span> Редакторская нормализация убрать воду</h3>
+<p class="sub">Для длинных текстов, которые нужно сжать в редакционный стандарт.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный редактор. Вот текст [ВСТАВИТЬ ТЕКСТ]. Нормализуй его: убери вводные конструкции, повторения, оценочные суждения; проверь что все утверждения подкреплены фактами или ссылками; сохрани термины, имена, даты, цифры; сделай короче на 30% без потери смысла; формат: 3-5 абзацев по 2-3 предложения.</div></div>
+
+<h3><span class="prompt-num">7</span> Рерайт текста под площадку</h3>
+<p class="sub">Адаптация одной публикации под Telegram, Дзен и VK.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Вот материал: [ТЕКСТ]. Адаптируй его для трёх площадок: Telegram — коротко, разговорно, 400-600 зн., 1 абзац + эмодзи. Дзен — заголовок-вопрос, лид-абзац (кто? что? где?), 1500-2000 зн., подзаголовки. VK — эмоциональный лид, 3-5 абзацев, вопрос в конце для комментариев.</div></div>
+
+<h3><span class="prompt-num">8</span> Что обсуждают по теме (TGStat)</h3>
+<p class="sub">Поиск упоминаний и тональность вокруг ключевой темы.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. Через TGStat получи тренд упоминаний за 30 дней по слову [КЛЮЧЕВОЕ_СЛОВО]. Разбей по каналам. Выдели: какой канал пишет чаще всего; какие посты собрали максимум охватов; сменилась ли тональность за период; какая тема в теме сейчас на пике.</div></div>
+
+<h3><span class="prompt-num">9</span> Классификатор релевантности по региону</h3>
+<p class="sub">Отсев постов по гео-привязке.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — редактор регионального СМИ. Вот список постов: [СПИСОК_ПОСТОВ]. Отметь для каждого: релевантен / не релевантен региону [РЕГИОН]. Критерии: прямое упоминание города или района, события в регионе, участие региональных спикеров. Итог: таблица с колонками Пост / Релевантность / Комментарий.</div></div>
+
+<h3><span class="prompt-num">10</span> Сравнительный дашборд конкурентов (TGStat)</h3>
+<p class="sub">Глубокое сравнение 2-5 каналов с трендами.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. Через TGStat сравни каналы [КАНАЛЫ — 2-5 штук] за 6 месяцев. Построй таблицу: подписчики (сейчас + прирост), средний охват, ERR, индекс цитирования, средняя частота постов. Выдели канал с макс. приростом подписчиков и канал с макс. ERR. Через MCP Telegram возьми 3 самых охватных поста за месяц у лидера.</div></div>
+
+<h3><span class="prompt-num">11</span> Адаптер 1 материал 5 форматов</h3>
+<p class="sub">Максимальная утилизация одного материала.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Вот материал (текст / интервью / видео / пресс-релиз): [ССЫЛКА_ИЛИ_ТЕКСТ]. Проанализируй и создай 5 форматов: 1) Новостная заметка (300-500 зн.); 2) Пост в Telegram (400-500 зн.); 3) Карточка-цитата; 4) Пост в VK; 5) Сюжет для Дзен (2000-2500 зн.). Для каждого формата — пояснение почему это сработает на этой площадке.</div></div>
+
+<h3><span class="prompt-num">12</span> Сторис-шаблон 3 конструкции</h3>
+<p class="sub">Быстрые варианты для сторис в соцсетях.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — SMM-редактор. По теме [ТЕМА] напиши 3 варианта сторис: Вариант A — За кулисами: покажи процесс, человеческий фактор. Вариант B — Полезный совет: короткий лайфхак. Вариант C — Реакция на новость: займи позицию, пригласи к дискуссии. Каждая — до 200 зн., с призывом.</div></div>
+
+<h3><span class="prompt-num">13</span> Поиск инфоповодов</h3>
+<p class="sub">Ежедневный поиск тем для постов на основе повестки.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — редактор регионального СМИ. Просканируй мои каналы-доноры из MCP Telegram (список [СПИСОК_КАНАЛОВ]) за последние 24 часа. Отбери 5 самых перспективных инфоповодов для региона [РЕГИОН]. Для каждого: чем важен для региона; что мы можем добавить своего; какой формат использовать; пример заголовка.</div></div>
+
+<h3><span class="prompt-num">14</span> Еженедельный дайджест канала</h3>
+<p class="sub">Автоматический отчёт для редакционной планерки.</p>
+<div class="prompt-block"><div class="label">Промпт</div><div class="prompt-text">Ты — главный аналитик редакции. Возьми посты из MCP Telegram канала [КАНАЛ] за последние 7 дней. Создай дайджест: сколько постов вышло / каких форматов; суммарные охваты за неделю, +/- к прошлой неделе; топ-3 поста недели (охваты + почему сработали); анти-топ-1 (низкие охваты + гипотеза почему); 2 инсайта для планерки.</div></div>
+
+<h2>Правила использования</h2>
+<ol>
+<li>Подставляйте свои данные в <code>[СКОБКИ]</code></li>
+<li>Промпты можно комбинировать: например, №3 + №10 = конкурентный анализ с гипотезой</li>
+<li>Для TGStat-промптов нужен запущенный MCP-сервер TGStat</li>
+<li>Все промпты проверены на агентность (следование инструкции, предсказуемый формат)</li>
+<li>Копируйте в свой ИИ-клиент (LobeHub, ChatGPT, DeepSeek и т.п.) — начинайте новый чат для каждого промпта</li>
+</ol>
+<div class="warning-box"><strong>Совет:</strong> сохраните эту страницу в закладки. Возвращайтесь к ней, когда нужно быстро написать аналитику, анонс, рерайт или найти инфоповод. Промпты №1, №2, №10 и №14 — самые частые в ежедневной работе.</div>
+
 </div>
 <footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 10.09.2026</p></footer>
 </div>
