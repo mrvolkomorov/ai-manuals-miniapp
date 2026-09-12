@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Чек-лист визуального пайплайна | Мануалы</title>
+<style>
+:root{--accent:#f43f5e;--accent-dark:#e11d48;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #fecdd3}.content h2:first-child{margin-top:0}.content p{margin-bottom:12px;font-size:14px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px}.content .highlight-box{background:#fff1f2;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .info-box{background:#f0fdf4;border-left:3px solid #22c55e;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 12px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 12px;border:1px solid var(--border);vertical-align:top}
+.step-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0;border-left:4px solid var(--accent)}.step-block .step-head{font-weight:700;font-size:15px;color:var(--accent-dark);margin-bottom:10px;display:flex;align-items:center;gap:8px}.step-block .step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:700;flex-shrink:0}.step-block .caps{font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.5px;margin-top:10px;margin-bottom:4px}.check-item{padding:4px 0 4px 24px;position:relative;font-size:14px;line-height:1.5}.check-item::before{content:'☐';position:absolute;left:0;color:var(--accent);font-size:15px}.check-item.done{color:var(--hint)}.check-item.done::before{content:'☑';color:var(--accent)}.prompt-box{background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:14px 16px;margin:10px 0;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;color:var(--text)}
+.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}.quick-ref{background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:18px 20px;margin:24px 0}.quick-ref .ref-title{font-weight:700;font-size:16px;color:var(--accent-dark);margin-bottom:10px}.quick-ref .ref-item{padding:3px 0;font-size:14px}.quick-ref .ref-num{display:inline-block;width:20px;height:20px;background:var(--accent);color:#fff;border-radius:50%;text-align:center;font-size:11px;font-weight:700;line-height:20px;margin-right:6px}
+@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h2{border-bottom-color:#333}.step-block,.quick-ref{background:#1a0a0e;border-color:#333}.highlight-box{background:#1a0a0e}.prompt-box{background:#1a0a0e;border-color:#333}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">Визуал</div>
+<h1>Чек-лист визуального пайплайна</h1>
+<div class="meta">9 шагов · Раздатка к Занятию 2 · 12.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<div class="highlight-box"><strong>Как пользоваться:</strong> перед запуском генерации отмечайте «Все ок» по каждому пункту. Поле «Пометки» — для вашего кейса.</div>
+
+<!-- Step 1 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">1</span> Зафиксировать событие и цель</div>
+<div class="check-item">Заполните: какое событие / тема</div>
+<div class="check-item">Заполните: цель публикации (анонс / новость / разбор / афиша)</div>
+<div class="check-item">Заполните: площадка-назначение</div>
+<div class="caps">Пометки</div>
+<p style="font-size:13px;color:var(--hint);border:1px dashed var(--border);border-radius:6px;padding:8px;margin:6px 0">&nbsp;</p>
+</div>
+
+<!-- Step 2 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">2</span> Собрать слот-бриф</div>
+<p style="font-size:13px;color:var(--hint);margin-bottom:8px">Для афиши: <code>[СОБЫТИЕ] [ДАТА] [МЕСТО] [ЦВЕТ БРЕНДА] [КЛЮЧЕВОЙ ЭЛЕМЕНТ]</code></p>
+<p style="font-size:13px;color:var(--hint);margin-bottom:10px">Для карточки: <code>[ТЕМА] [ЗАГОЛОВОК &lt;6 слов] [ЦИФРА/ЦЕЛЬ] [ЦВЕТ БРЕНДА] [ЭЛЕМЕНТ]</code></p>
+<div class="check-item">Все переменные заполнены</div>
+<div class="check-item">В промпте прописан <strong>запрет текста</strong></div>
+<div class="check-item">В промпте прописан <strong>запрет логотипов</strong></div>
+<div class="check-item">В промпте прописан <strong>запрет людей / лиц</strong></div>
+
+<div class="caps">Промпт-шаблон</div>
+<div class="prompt-box">Афиша мероприятия. Событие: [СОБЫТИЕ]. Дата: [ДАТА]. Место: [МЕСТО]. Цветовая схема: [ЦВЕТ БРЕНДА]. Ключевой элемент: [ЭЛЕМЕНТ]. Без текста, без логотипов, без людей.</div>
+<div class="caps">Пометки</div>
+<p style="font-size:13px;color:var(--hint);border:1px dashed var(--border);border-radius:6px;padding:8px;margin:6px 0">&nbsp;</p>
+</div>
+
+<!-- Step 3 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">3</span> Пакетная генерация 6–8 вариантов</div>
+<div class="check-item">Инструмент: Kandinsky / FusionBrain / Flux</div>
+<div class="check-item">Запущено 3+ промпта с разными [ЭЛЕМЕНТ]</div>
+<div class="check-item">Дождаться полного рендера (30–90 сек)</div>
+<div class="info-box" style="margin-top:8px"><strong>Совет:</strong> запускайте генерацию в фоне параллельно с другими задачами.</div>
+</div>
+
+<!-- Step 4 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">4</span> Отбор 1–2 кандидатов по композиции</div>
+<div class="check-item">Композиция сбалансирована</div>
+<div class="check-item">Нет артефактов в ключевых зонах</div>
+<div class="check-item">Цвета близки к брендовым</div>
+<div class="check-item">Нет лишних объектов</div>
+</div>
+
+<!-- Step 5 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">5</span> Inpaint по проблемным зонам</div>
+<div class="check-item">Артефакты ИИ (лишние пальцы, искажённые объекты)</div>
+<div class="check-item">Лишние детали на заднем плане</div>
+<div class="check-item">Обрезать или перекомпоновать</div>
+<div class="caps">Инструменты</div>
+<p style="font-size:13px">Kandinsky Inpaint, FusionBrain Editing, Photoshop, Canva Magic Eraser.</p>
+</div>
+
+<!-- Step 6 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">6</span> Цветокоррекция под брендбук</div>
+<div class="check-item">Основной цвет приведён к брендовой палитре</div>
+<div class="check-item">Фон — нейтральный или брендовый</div>
+<div class="check-item">Контраст достаточен для читаемости текста</div>
+<div class="caps">HEX коды бренда</div>
+<table><tr><th>Цвет</th><th>Код</th></tr>
+<tr><td>Основной</td><td>&nbsp;</td></tr>
+<tr><td>Дополнительный</td><td>&nbsp;</td></tr>
+<tr><td>Фон</td><td>&nbsp;</td></tr>
+<tr><td>Акцент</td><td>&nbsp;</td></tr>
+</table>
+</div>
+
+<!-- Step 7 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">7</span> Текст и логотип — вручную</div>
+<div class="check-item">Заголовок наложен в редакторе (Canva / Photoshop / Figma)</div>
+<div class="check-item">Логотип издания добавлен</div>
+<div class="check-item">Шрифт соответствует брендбуку</div>
+<div class="check-item">Текст проверен: нет опечаток, фактов, дат</div>
+<div class="warning-box" style="margin-top:8px"><strong>Важно:</strong> ИИ не умеет корректно размещать текст на картинке. Никогда не доверяйте генерации текста внутри изображения.</div>
+</div>
+
+<!-- Step 8 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">8</span> Этика и права</div>
+<div class="check-item">Нет чужих водяных знаков</div>
+<div class="check-item">Нет реальных лиц без согласия</div>
+<div class="check-item">Нет прямого копирования чужого стиля 1:1</div>
+<div class="check-item">Источник данных указан</div>
+<div class="check-item">Не нарушает политику площадки</div>
+</div>
+
+<!-- Step 9 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">9</span> Экспорт под площадки + запись рецепта</div>
+<div class="check-item">Экспортирован в нужном разрешении</div>
+<div class="check-item">Файл подписан по стандарту редакции</div>
+<div class="check-item">Рецепт зафиксирован: промпт + переменные + правки</div>
+<div class="check-item">Сценарий в общем репозитории</div>
+<div class="caps">Памятка по разрешениям</div>
+<table><tr><th>Площадка</th><th>Разрешение</th></tr>
+<tr><td>Telegram (пост)</td><td>1080×1080 px</td></tr>
+<tr><td>Telegram (сторис)</td><td>1080×1920 px</td></tr>
+<tr><td>VK (пост)</td><td>1200×900 px</td></tr>
+<tr><td>Дзен (статья)</td><td>1200×675 px</td></tr>
+<tr><td>Веб-сайт</td><td>по требованию</td></tr>
+</table>
+</div>
+
+<h2>Быстрый шаблон промпта</h2>
+<p>Скопируйте и подставьте свои значения:</p>
+<div class="prompt-box">Афиша мероприятия.
+Событие: [СОБЫТИЕ]
+Дата: [ДАТА]
+Место: [МЕСТО]
+Цветовая схема: [ЦВЕТ БРЕНДА]
+Ключевой элемент: [ЭЛЕМЕНТ]
+Стиль: плоский/минималистичный/реалистичный
+Без текста, без логотипов, без людей, без водяных знаков.
+Формат: 1080×1080 px.</div>
+
+<div class="quick-ref">
+<div class="ref-title">📋 Чек-лист одной строкой</div>
+<div><span class="ref-num">1</span> Событие и цель</div>
+<div><span class="ref-num">2</span> Слот-бриф + запреты</div>
+<div><span class="ref-num">3</span> Пакет 6–8 вариантов</div>
+<div><span class="ref-num">4</span> Отбор 1–2</div>
+<div><span class="ref-num">5</span> Inpaint артефактов</div>
+<div><span class="ref-num">6</span> Цветокоррекция</div>
+<div><span class="ref-num">7</span> Текст и логотип руками</div>
+<div><span class="ref-num">8</span> Этика и права</div>
+<div><span class="ref-num">9</span> Экспорт + рецепт в репозиторий</div>
+</div>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 12.09.2026</p></footer>
+</div>
+</body>
+</html>
