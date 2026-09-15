@@ -70,12 +70,18 @@
 <div class="step-box">
 <div class="step-head">Способ А — через Colab (рекомендуется, без установки программ)</div>
 <ol>
-<li>Зайдите на <a href="https://colab.research.google.com">colab.research.google.com</a> и войдите в Google-аккаунт</li>
-<li>File → Open notebook → GitHub → вставьте ссылку <code>github.com/ВАШ-USERNAME/telegram-mcp-http</code></li>
-<li>Откройте файл <code>generate_session.py</code></li>
-<li>Замените <code>API_ID = 0</code> и <code>API_HASH = ""</code> на ваши данные из Шага 3</li>
-<li>Нажмите зелёную кнопку <strong>Run</strong></li>
+<li>Зайдите на Colab-ноутбук по <strong>ссылке из чата</strong></li>
+<li>Нажмите <strong>Connect</strong> (справа вверху) — среда подключится за ~30 сек</li>
+<li>Запустите <strong>первую ячейку</strong> ▶ (установка Telethon)</li>
+<li>Запустите <strong>вторую ячейку</strong> ▶</li>
+<li>Внизу появятся поля для ввода:</li>
+</ol>
+<ul style="margin:-4px 0 12px 36px">
+<li>Введите <code>API_ID</code> (число из Шага 3)</li>
+<li>Введите <code>API_HASH</code> (строка из Шага 3)</li>
 <li>Введите номер телефона в формате <code>+79001234567</code></li>
+</ul>
+<ol start="6">
 <li>Введите код из Telegram (код НЕ отображается при вводе — это нормально)</li>
 <li>Если включена двухфакторка — введите пароль</li>
 <li>Скопируйте длинную строку (начинается с 1) — это ваш session string</li>
