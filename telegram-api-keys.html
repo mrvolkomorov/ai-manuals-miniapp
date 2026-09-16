@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Как получить API ID и API Hash Telegram | Мануалы</title>
+<style>
+:root{--accent:#6366f1;--accent-dark:#4f46e5;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header h1 span{font-size:14px;font-weight:400;opacity:.8;display:block;margin-top:2px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content p{margin-bottom:12px;font-size:14px}.content h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #c7d2fe}.content h2:first-child{margin-top:0}.content h3{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--accent-dark)}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px;word-break:break-all}.content pre{background:var(--code-bg);border-radius:8px;padding:12px 14px;margin:10px 0 18px;overflow-x:auto;line-height:1.5;border:1px solid var(--border);font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;white-space:pre-wrap;word-break:break-all}.content .highlight-box{background:#eef2ff;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fef2f2;border-left:3px solid #ef4444;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .info-box{background:#f0fdf4;border-left:3px solid #22c55e;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .tip-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 12px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 12px;border:1px solid var(--border);vertical-align:top}.step-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0;border-left:4px solid var(--accent)}.step-block .step-head{font-weight:700;font-size:15px;color:var(--accent-dark);margin-bottom:10px;display:flex;align-items:center;gap:8px}.step-block .step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--accent);color:#fff;border-radius:50%;font-size:13px;font-weight:700;flex-shrink:0}.step-block .caps{font-size:11px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.5px;margin-top:12px;margin-bottom:4px}.cmd{background:#1e293b;color:#e2e8f0;border-radius:8px;padding:10px 14px;margin:8px 0;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;overflow-x:auto;white-space:pre-wrap;word-break:break-all}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h3{color:var(--accent)}.step-block{background:#1e1a3a;border-color:#333}.highlight-box{background:#1e1a3a}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">MCP-серверы</div>
+<h1>Как получить API ID и API Hash Telegram<span>для пользователей из РФ</span></h1>
+<div class="meta">v1.0 · 16.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<div class="warning-box"><strong>Проблема:</strong> Сайт my.telegram.org в России не открывается без VPN. А если зайти через VPN, Telegram видит, что ваш номер российский (+7), а IP-адрес зарубежный, и выдаёт ошибку ERROR.</div>
+
+<p><strong>Причина:</strong> блокировка работает на уровне DNS. Провайдер не отдаёт правильный IP-адрес сайта. Но сам сайт при этом доступен, если подсказать компьютеру нужный IP вручную.</p>
+<p><strong>Решение:</strong> внести одну строчку в файл hosts — сайт откроется с вашего обычного российского IP.</p>
+
+<h2>Решение 1 (основное): добавить строчку в файл hosts</h2>
+<p>Этот способ работает у большинства пользователей. Выполните все шаги последовательно.</p>
+
+<!-- Step 1 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">1</span> Проверьте, подойдёт ли вам этот способ</div>
+<p style="font-size:13px">Проверьте, разрешает ли ваш провайдер подключение к сайту Telegram напрямую.</p>
+
+<div class="caps">Windows</div>
+<ol>
+<li>Нажмите <strong>Win</strong>, начните печатать <code>cmd</code></li>
+<li>В результатах поиска нажмите на <strong>Командная строка</strong> правой кнопкой → <strong>Запуск от имени администратора</strong></li>
+<li>Вставьте команду и нажмите Enter:</li>
+</ol>
+<div class="cmd">curl -sv --connect-timeout 5 -m 15 --resolve my.telegram.org:443:149.154.167.220 https://my.telegram.org -o NUL</div>
+
+<div class="caps">Mac</div>
+<ol>
+<li><strong>Command + пробел</strong> → напишите <strong>Терминал</strong> → Enter</li>
+<li>Вставьте команду и нажмите Enter:</li>
+</ol>
+<div class="cmd">curl -sv --connect-timeout 5 -m 15 --resolve my.telegram.org:443:149.154.167.220 https://my.telegram.org -o /dev/null</div>
+
+<div class="caps">Что смотреть в результате</div>
+<ul>
+<li><strong>HTTP/2 200</strong> или <strong>HTTP/1.1 302</strong> в самом конце → ✅ отлично, способ подходит, переходите к Шагу 2</li>
+<li><strong>Failed to connect</strong> или <strong>Connection timed out</strong> → ❌ провайдер блокирует сам IP-адрес. Переходите к Решению 2</li>
+<li><strong>Connection reset</strong> или ошибка <strong>SSL</strong> → ❌ способ не подходит</li>
+</ul>
+</div>
+
+<!-- Step 2 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">2</span> Отключите VPN</div>
+<p>Если на вашем компьютере или телефоне включён VPN — <strong>полностью отключите его</strong>. Сайт должен открываться с вашего обычного российского IP.</p>
+</div>
+
+<!-- Step 3 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">3</span> Откройте файл hosts для редактирования</div>
+
+<div class="caps">Windows 10 / 11</div>
+<ol>
+<li>Нажмите <strong>Win</strong> → напишите <strong>Блокнот</strong> → правой кнопкой → <strong>Запуск от имени администратора</strong></li>
+<li>В Блокноте: <strong>Файл → Открыть</strong></li>
+<li>Перейдите в папку: <code>C:\Windows\System32\drivers\etc</code></li>
+<li>Важно: в правом нижнем углу переключите фильтр с «Текстовые документы (.txt)» на <strong>«Все файлы (.)»</strong></li>
+<li>Выберите файл <code>hosts</code> (без расширения) → Открыть</li>
+<li>Курсор в самый конец файла → Enter</li>
+<li>Вставьте строчку:</li>
+</ol>
+<div class="cmd">149.154.167.220 my.telegram.org</div>
+<ol start="8">
+<li><strong>Файл → Сохранить</strong> (Ctrl + S)</li>
+</ol>
+<div class="tip-box"><strong>Типичная ошибка:</strong> Блокнот сохраняет файл как <code>hosts.txt</code>. Так файл не будет работать. Если столкнулись — закройте Блокнот, откройте заново от администратора, снова откройте hosts и при сохранении в поле «Имя файла» напишите в кавычках: <code>"hosts"</code>. Убедитесь, что в папке нет двух файлов — hosts и hosts.txt.</div>
+
+<div class="caps">Mac</div>
+<ol>
+<li>Откройте <strong>Терминал</strong> (Command + пробел → Терминал)</li>
+<li>Введите команду:</li>
+</ol>
+<div class="cmd">sudo nano /etc/hosts</div>
+<ol start="3">
+<li>Введите пароль пользователя (символы не отображаются — нормально)</li>
+<li>Стрелками переместите курсор в конец файла → Enter → вставьте строчку:</li>
+</ol>
+<div class="cmd">149.154.167.220 my.telegram.org</div>
+<ol start="5">
+<li>Сохраните: <strong>Control + O</strong> (именно Control, не Command) → Enter</li>
+<li>Выйдите: <strong>Control + X</strong></li>
+</ol>
+</div>
+
+<!-- Step 4 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">4</span> Очистите кэш DNS</div>
+
+<div class="caps">Windows</div>
+<div class="cmd">ipconfig /flushdns</div>
+
+<div class="caps">Mac</div>
+<div class="cmd">sudo dscacheutil -flushcache<br>sudo killall -HUP mDNSResponder</div>
+</div>
+
+<!-- Step 5 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">5</span> Полностью закройте и заново откройте браузер</div>
+<p>Закройте не просто вкладку, а <strong>весь браузер целиком</strong>.</p>
+<p style="font-size:13px"><strong>Windows:</strong> Ctrl + Shift + Esc → Диспетчер задач → найдите браузер → правой кнопкой → Завершить задачу. <strong>Mac:</strong> Command + Q.</p>
+</div>
+
+<!-- Step 6 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">6</span> Зайдите на сайт и получите ключи</div>
+<ol>
+<li>Откройте браузер → <a href="https://my.telegram.org">my.telegram.org</a> (сайт должен открыться)</li>
+<li>Введите номер: <code>+7XXXXXXXXXX</code> → Next</li>
+<li>Введите код из Telegram</li>
+<li>Нажмите <strong>API Development Tools</strong></li>
+<li>Заполните форму (см. раздел «Как правильно заполнить форму» ниже)</li>
+<li>Нажмите <strong>Create Application</strong></li>
+<li>Скопируйте <strong>App api_id</strong> и <strong>App api_hash</strong> — сохраните в надёжном месте</li>
+</ol>
+</div>
+
+<!-- Step 7 -->
+<div class="step-block">
+<div class="step-head"><span class="step-num">7</span> Верните файл hosts в исходное состояние <span style="color:#ef4444;font-weight:700">(обязательно!)</span></div>
+<div class="warning-box"><strong>Важно:</strong> После получения ключей обязательно удалите добавленную строчку из файла hosts. Если этого не сделать — когда Telegram в будущем сменит IP-адрес сервера, сайт перестанет открываться вообще.</div>
+<p>Повторите действия Шага 3, только на этот раз удалите строчку <code>149.154.167.220 my.telegram.org</code> и сохраните файл. Затем очистите DNS-кэш (Шаг 4).</p>
+</div>
+
+<h2>Как правильно заполнить форму</h2>
+<div class="warning-box"><strong>Критически важно:</strong> даже если сайт открылся и вы авторизовались, многие получают ошибку из-за неправильного заполнения формы. Telegram не показывает, какое именно поле вызывает ошибку — просто выдаёт ERROR.</div>
+
+<table>
+<tr><th>Поле</th><th>Правила</th><th>Пример</th></tr>
+<tr><td><strong>App title</strong></td><td>Только латиница с заглавной. Без: telegram, parser, scraper, mass, sender, spam. Без пробелов, _, -, @, #. ≤64 символа.</td><td><code>PersonalClientApp</code></td></tr>
+<tr><td><strong>Short name</strong></td><td>Только строчные латиница (a-z) и цифры. От 5 до 32 символов. <strong>Самое капризное поле!</strong></td><td><code>personalclient26</code></td></tr>
+<tr><td><strong>URL</strong></td><td>Любой реальный адрес. Можно оставить пустым.</td><td><code>https://example.com</code></td></tr>
+<tr><td><strong>Platform</strong></td><td>Выберите <strong>Desktop</strong></td><td>Desktop</td></tr>
+<tr><td><strong>Description</strong></td><td>Осмысленное описание, минимум 40 символов.</td><td><code>Personal client for working with Telegram API</code></td></tr>
+</table>
+
+<h2>Решение 2: VPN через Казахстан или Узбекистан</h2>
+<p>Некоторые пользователи из России сообщают, что через VPN с IP Казахстана или Узбекистана получить ключи удаётся. Работает не всегда, но проверенный вариант.</p>
+<ul>
+<li>Подключите VPN с сервером в Казахстане или Узбекистане</li>
+<li>Зайдите на <a href="https://my.telegram.org">my.telegram.org</a></li>
+<li>Авторизуйтесь и заполните форму</li>
+<li>Нажмите Create Application</li>
+</ul>
+
+<h2>Решение 3: Cloudflare WARP</h2>
+<p>Бесплатный сервис, который иногда помогает обойти DNS-блокировку без смены IP на зарубежный.</p>
+<ul>
+<li>Перейдите на <a href="https://1.1.1.1">1.1.1.1</a></li>
+<li>Скачайте и установите приложение для вашей ОС</li>
+<li>Запустите и включите</li>
+<li>Зайдите на <a href="https://my.telegram.org">my.telegram.org</a> и попробуйте создать приложение</li>
+</ul>
+
+<h2>Решение 4: комбинированный способ</h2>
+<ol>
+<li>Включите VPN и зайдите на my.telegram.org</li>
+<li>Авторизуйтесь, заполните форму, но <strong>не нажимайте</strong> Create Application</li>
+<li>Отключите VPN</li>
+<li>Отредактируйте файл hosts (как в Шаге 3)</li>
+<li>Очистите DNS-кэш (как в Шаге 4)</li>
+<li>Теперь нажмите <strong>Create Application</strong> — запрос уйдёт с вашего российского IP</li>
+</ol>
+
+<h2>Чего точно НЕ стоит делать</h2>
+<ul>
+<li><strong>Не пытайтесь сделать это 20 раз подряд.</strong> Telegram временно заблокирует ваш аккаунт от создания приложений (на несколько часов или сутки)</li>
+<li><strong>Не используйте короткие имена.</strong> Short name короче 5 символов — гарантированная ошибка</li>
+<li><strong>Не называйте приложение</strong> TelegramParser, MassSender, ScraperBot — такие названия вызывают автоматическую блокировку</li>
+<li><strong>Не оставляйте запись в файле hosts навсегда</strong> — когда Telegram сменит IP сервера, сайт перестанет работать</li>
+<li><strong>Не тратьте время на поддержку Telegram</strong> — они не отвечают на такие запросы</li>
+</ul>
+
+<h2>Источники</h2>
+<p style="font-size:13px;color:var(--hint)">Инструкция составлена на основе проверенных материалов: Habr (статьи TypicalNick и monrech, сентябрь 2026), vc.ru (июль 2026), GitHub Discussion #11494, appuals.com, karashchuk.com, konadu.dev.</p>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 16.09.2026</p></footer>
+</div>
+</body>
+</html>
