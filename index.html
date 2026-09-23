@@ -183,6 +183,8 @@
 .card-icon.prompts { background: linear-gradient(135deg, #faf5ff 0%, #e9d5ff 100%); }
         .card-icon.reference { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
         .card-icon.visual { background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%); }
+        .card-icon.video { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); }
+        .card-icon.conspect { background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); }
         .card-info { flex: 1; min-width: 0; }
         .card-title {
             font-size: 15px;
@@ -210,6 +212,8 @@
 .badge-prompts { background: #f5f3ff; color: #7e22ce; }
         .badge-reference { background: #e0f2fe; color: #0284c7; }
         .badge-visual { background: #ffe4e6; color: #e11d48; }
+        .badge-video { background: #dbeafe; color: #2563eb; }
+        .badge-conspect { background: #e2e8f0; color: #475569; }
         .card-desc {
             font-size: 13px;
             color: var(--tg-theme-hint);
@@ -278,8 +282,8 @@
         </header>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-number" id="totalCount">12</div><div class="stat-label">Мануалов</div></div>
-            <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">Категорий</div></div>
+            <div class="stat-item"><div class="stat-number" id="totalCount">16</div><div class="stat-label">Мануалов</div></div>
+            <div class="stat-item"><div class="stat-number">10</div><div class="stat-label">Категорий</div></div>
             <div class="stat-item"><div class="stat-number">v1.2</div><div class="stat-label">Версия</div></div>
         </div>
 
@@ -293,6 +297,8 @@
                 <button class="filter-tab" data-filter="visual">Визуал</button>
                 <button class="filter-tab" data-filter="prompts">Промпты</button>
                 <button class="filter-tab" data-filter="template">Шаблоны</button>
+                <button class="filter-tab" data-filter="video">Видео</button>
+                <button class="filter-tab" data-filter="conspect">Конспекты</button>
                 <button class="filter-tab" data-filter="reference">Справочник</button>
             </div>
         </div>
@@ -318,7 +324,11 @@
             {id:'glossary',title:'Глоссарий — базовые понятия курса',description:'Словарь терминов курса: LLM, MCP, агенты, n8n, платформы, метрики, контент и безопасность. Более 50 терминов с краткими определениями.',url:'glossary.html',category:'reference',icon:'📖',iconClass:'reference',badge:'Словарь',badgeClass:'badge-reference',tags:['Глоссарий','Справочник','Термины']},
             {id:'visual-pipeline',title:'Чек-лист визуального пайплайна (9 шагов)',description:'От события до экспорта: сборка слота-брифа, генерация 6-8 вариантов, отбор, inpaint, цветокоррекция, этика, запись рецепта. Шпаргалка для ежедневной работы с визуалом.',url:'visual-pipeline.html',category:'visual',icon:'🎨',iconClass:'visual',badge:'Визуал',badgeClass:'badge-visual',tags:['Чек-лист','Визуал','Дизайн','Пайплайн']},
             {id:'image-manual',title:'Картинка за 5 минут: генерация и редактирование',description:'Формула промпта, обязательные запреты, 5 готовых промптов под рубрики, пошагово Kandinsky, inpaint/outpaint/upscale, чек-лист перед публикацией, право и маркировка ИИ.',url:'image-manual.html',category:'visual',icon:'🖼️',iconClass:'visual',badge:'Визуал',badgeClass:'badge-visual',tags:['Генерация','Промпты','Inpaint']},
-            {id:'telegram-api-keys',title:'Как получить API ID и API Hash Telegram (для РФ)',description:'Пошаговая инструкция: обход блокировки my.telegram.org через файл hosts, VPN через Казахстан, Cloudflare WARP, комбинированный способ. Форма заполнения и частые ошибки.',url:'telegram-api-keys.html',category:'mcp',icon:'🔐',iconClass:'mcp',badge:'Telegram',badgeClass:'badge-mcp',tags:['API','Регистрация','Обход блокировки']}
+            {id:'telegram-api-keys',title:'Как получить API ID и API Hash Telegram (для РФ)',description:'Пошаговая инструкция: обход блокировки my.telegram.org через файл hosts, VPN через Казахстан, Cloudflare WARP, комбинированный способ. Форма заполнения и частые ошибки.',url:'telegram-api-keys.html',category:'mcp',icon:'🔐',iconClass:'mcp',badge:'Telegram',badgeClass:'badge-mcp',tags:['API','Регистрация','Обход блокировки']},
+            {id:'video-lesson1',title:'Видеозапись занятия 1',description:'Полная запись первого занятия: настройка инфраструктуры ИИ-агента — GitHub, Telegram API, Railway, DeepGram, LobeHub, экономика нейросетей.',url:'https://disk.yandex.ru/i/mYBE8MyG9VP4hg',category:'video',icon:'🎬',iconClass:'video',badge:'Занятие 1',badgeClass:'badge-video',tags:['Видео','Занятие 1','Инфраструктура']},
+            {id:'video-lesson2',title:'Видеозапись занятия 2',description:'Полная запись второго занятия: агенты, инструменты и автоматизация — сборка связки агент + MCP + скиллы, демо на реальных кейсах.',url:'https://disk.yandex.ru/i/mYBE8MyG9VP4hg',category:'video',icon:'🎬',iconClass:'video',badge:'Занятие 2',badgeClass:'badge-video',tags:['Видео','Занятие 2','Агенты']},
+            {id:'conspect-lesson1',title:'Конспект занятия 1: Настройка инфраструктуры',description:'Анатомия ИИ-агента, GitHub и Fork, доступы Telegram, развёртывание на Railway, DeepGram, сборка агента в LobeHub, экономика нейросетей, безопасность.',url:'conspect-lesson1.html',category:'conspect',icon:'📄',iconClass:'conspect',badge:'Занятие 1',badgeClass:'badge-conspect',tags:['Конспект','Инфраструктура','Telegram']},
+            {id:'conspect-lesson2',title:'Конспект занятия 2: Агенты, инструменты и автоматизация',description:'Четыре слоя агента, отличие агента от чата, LobeHub, API-ключи, MCP-коннекторы, Composio, создание агента, скиллы, автоматизация (Tasks, N8N), MCP vs браузер.',url:'conspect-lesson2.html',category:'conspect',icon:'📄',iconClass:'conspect',badge:'Занятие 2',badgeClass:'badge-conspect',tags:['Конспект','Агенты','Автоматизация']}
         ];
 
         function renderManuals(f){f=f||'all';var g=document.getElementById('manualsGrid'),h=f==='all'?manuals:manuals.filter(function(m){return m.category===f});if(!h.length){g.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><p class="empty-text">В этой категории пока нет мануалов</p></div>';return}g.innerHTML=h.map(function(m){return '<article class="manual-card" onclick="openManual(\''+m.url+'\')"><div class="card-header"><div class="card-icon '+m.iconClass+'">'+m.icon+'</div><div class="card-info"><h3 class="card-title">'+m.title+'</h3><div class="card-meta"><span class="card-badge '+m.badgeClass+'">'+m.badge+'</span></div></div></div><p class="card-desc">'+m.description+'</p><div class="card-footer"><div class="card-tags">'+m.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div><button class="open-btn" onclick="event.stopPropagation();openManual(\''+m.url+'\')">Открыть ↗</button></div></article>'}).join('')}
