@@ -334,11 +334,12 @@
         function renderManuals(f){f=f||'all';var g=document.getElementById('manualsGrid'),h=f==='all'?manuals:manuals.filter(function(m){return m.category===f});if(!h.length){g.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><p class="empty-text">В этой категории пока нет мануалов</p></div>';return}g.innerHTML=h.map(function(m){return '<article class="manual-card" onclick="openManual(\''+m.url+'\')"><div class="card-header"><div class="card-icon '+m.iconClass+'">'+m.icon+'</div><div class="card-info"><h3 class="card-title">'+m.title+'</h3><div class="card-meta"><span class="card-badge '+m.badgeClass+'">'+m.badge+'</span></div></div></div><p class="card-desc">'+m.description+'</p><div class="card-footer"><div class="card-tags">'+m.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div><button class="open-btn" onclick="event.stopPropagation();openManual(\''+m.url+'\')">Открыть ↗</button></div></article>'}).join('')}
 
         function openManual(url) {
-            var base = window.location.href.replace(/index\.html$/, '');
+            // Внешние ссылки (https://) открываем как есть; относительные — от базового пути
+            var full = /^https?:\/\//i.test(url) ? url : window.location.href.replace(/index\.html$/, '') + url;
             if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.openLink(base + url, { try_instant_view: false });
+                window.Telegram.WebApp.openLink(full, { try_instant_view: false });
             } else {
-                window.open(base + url, '_blank');
+                window.open(full, '_blank');
             }
         }
 
