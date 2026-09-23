@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>n8n: автоматизация редакционной рутины | Мануалы</title>
+<style>
+:root{--accent:#22c55e;--accent-dark:#16a34a;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:21px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content p{margin-bottom:12px;font-size:14px}.content h2{font-size:18px;font-weight:700;margin:30px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #bbf7d0;display:flex;align-items:center;gap:8px}.content h2:first-child{margin-top:0}.content h3{font-size:15px;font-weight:700;margin:20px 0 8px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px;word-break:break-all}.content pre{background:#1e293b;color:#e2e8f0;border-radius:8px;padding:12px 14px;margin:10px 0 18px;overflow-x:auto;line-height:1.5;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:12.5px;white-space:pre-wrap;word-break:break-word}.content .highlight-box{background:#f0fdf4;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .info-box{background:#eff6ff;border-left:3px solid #3b82f6;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .star-box{background:#fef9c3;border-left:3px solid #eab308;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12.5px}.content th{background:var(--code-bg);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 10px;border:1px solid var(--border);vertical-align:top}.step-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0;border-left:4px solid var(--accent)}.step-block .step-head{font-weight:700;font-size:15px;color:var(--accent-dark);margin-bottom:10px}.checklist-item{padding:4px 0 4px 24px;position:relative;font-size:14px;line-height:1.5}.checklist-item::before{content:'☐';position:absolute;left:0;color:var(--accent);font-size:15px}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h2{border-bottom-color:#333}.step-block{background:#0a1a0a;border-color:#333}.highlight-box{background:#0a1a0a}.star-box{background:#1a1a0a}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">n8n</div>
+<h1>n8n: автоматизация редакционной рутины</h1>
+<div class="meta">От регистрации до первого робота · v1.0 · 23.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<div class="highlight-box">На втором занятии мы не успели дойти до n8n. Этот документ закрывает пробел: пройдите его в своём темпе — от регистрации до первого робота, который сам приносит новости.</div>
+
+<h2>1. Коротко: чем n8n отличается от агента</h2>
+<p><strong>Агент</strong> (LobeHub и аналогичные приложения) — это диалог. Вы пишете задачу — он её делает «сейчас». <strong>n8n</strong> — это робот, который работает без вас: по расписанию или по событию, в фоне.</p>
+<table>
+<tr><th></th><th>Агент</th><th>n8n</th></tr>
+<tr><td><strong>Запуск</strong></td><td>Вы пишете в чат</td><td>Сам: по расписанию или событию</td></tr>
+<tr><td><strong>Задача</strong></td><td>Разовые, творческие</td><td>Повторяющиеся, конвейерные</td></tr>
+<tr><td><strong>Участие человека</strong></td><td>Нужно</td><td>Не нужно после настройки</td></tr>
+<tr><td><strong>Что делает</strong></td><td>Ищет, пишет, анализирует</td><td>Собирает → обрабатывает → доставляет</td></tr>
+</table>
+<p>Что реально закрывает n8n в редакции:</p>
+<ul>
+<li>08:00 — утренний дайджест из 10 каналов в рабочий Telegram</li>
+<li>Мониторинг упоминаний города и холдинга → алерт в чат</li>
+<li>Кросс-постинг: один материал → посты в VK / Telegram / OK / Дзен</li>
+<li>Логирование всего найденного в Google-таблицу</li>
+<li>Пятничная сводка статистики каналов</li>
+</ul>
+
+<h2>2. Что понадобится</h2>
+<ul>
+<li>Аккаунт n8n (облако или свой сервер)</li>
+<li>Telegram-бот и его токен (делается за 2 минуты через @BotFather)</li>
+<li>Ключ API модели (DeepSeek / OpenRouter / AiTunnel — те же, что в LobeHub)</li>
+<li>Доступ к TGStat (если делаете мониторинг каналов)</li>
+<li>Google-аккаунт (для таблиц-логов)</li>
+<li>30–60 минут на первый запуск</li>
+</ul>
+
+<h2>3. Где разместить n8n: варианты и цены (2026)</h2>
+<div class="warning-box"><strong>Важно про лимиты.</strong> «Execution» в n8n — это один запуск всего workflow, а не шаг. Но если поставить расписание «каждые 5 минут» — это 8 640 запусков в месяц, и лимит Starter (2 500) закончится за 9 дней. Планируйте частоту.</div>
+<table>
+<tr><th>Вариант</th><th>Цена</th><th>Плюсы</th><th>Минусы</th></tr>
+<tr><td><strong>n8n Cloud</strong></td><td>Trial 14 дней; Starter €24/мес (≈$20 при годовой), 2 500 запусков/мес, AI-ассистент</td><td>Старт за 5 минут, ничего не ставить</td><td>Лимит запусков, данные в ЕС</td></tr>
+<tr><td><strong>n8n self-hosted</strong></td><td>Софт бесплатно + сервер ~$4–7/мес (≈800–900 ₽)</td><td>Без лимитов, дёшево в масштабе</td><td>Нужен человек, который поставит на сервер</td></tr>
+<tr><td><strong>Albato</strong> (российский)</td><td>Бесплатно бессрочно (100 транзакций/мес, 5 связок, до 2 шагов); платно от ~$15/мес</td><td>Всё на русском, оплата картой РФ</td><td>Меньше шагов и связок</td></tr>
+<tr><td><strong>Zapier / Make</strong></td><td>от ~$20–30/мес</td><td>Знакомы многим</td><td>Дороже за тот же объём</td></tr>
+</table>
+<div class="info-box">💡 <strong>Про тариф Cloud за €24:</strong> в нём уже встроен AI-ассистент n8n. Вы описываете задачу словами — и ассистент сам расставляет ноды и связи. Писать код и править JSON не нужно.</div>
+<div class="star-box">⭐ <strong>Путь со звёздочкой:</strong> любой готовый workflow из Cloud экспортируется в файл («…» → Download), а этот же файл импортируется в n8n на своём сервере. Цепочку собираете один раз в Cloud — а дальше пользуетесь ей на своём VPS примерно за 800 ₽/мес вместо €24. Пошагово — раздел 15.</div>
+
+<h2>4. Анатомия n8n за 3 минуты</h2>
+<ul>
+<li><strong>Canvas</strong> — рабочее поле</li>
+<li><strong>Node</strong> — блок. Жёлтый — триггер, остальные — действия</li>
+<li><strong>Trigger</strong> — расписание, вебхук, новое письмо, новая публикация</li>
+<li><strong>Action</strong> — HTTP-запрос, Telegram, Google Sheets и т.д.</li>
+<li><strong>LLM</strong> — модель для анализа и текста (через HTTP Request)</li>
+<li><strong>Credentials</strong> — ключи и токены (хранятся в n8n, а не в тексте workflow)</li>
+<li><strong>Execute / Test</strong> — пробный запуск</li>
+<li><strong>Active</strong> — переключатель «работать по расписанию»</li>
+</ul>
+
+<h2>5. Шаг 1. Регистрация в n8n Cloud</h2>
+<ol>
+<li>Откройте <a href="https://n8n.cloud">n8n.cloud</a> → Sign up</li>
+<li>Email + пароль → подтвердите письмо</li>
+<li>Выберите триал (14 дней, карта не нужна)</li>
+<li>Откроется редактор (холст)</li>
+</ol>
+<div class="highlight-box">✅ <strong>Признак успеха:</strong> видите пустой холст и кнопку «Add first step…»</div>
+
+<h2>6. Шаг 2. Первый workflow за 5 минут</h2>
+<p>Цель — понять механику. Соберём робота, который «просыпается» по расписанию.</p>
+<ol>
+<li>Add first step → <strong>Schedule Trigger</strong></li>
+<li>В параметрах: Trigger Interval = Minutes, Minutes Between Triggers = 10 (для теста)</li>
+<li>Add node → <strong>Code</strong> → вставьте:</li>
+</ol>
+<pre>return [{ json: { message: "Привет от n8n! " + new Date().toLocaleString() } }];</pre>
+<ol start="4">
+<li>Нажмите <strong>Execute Workflow</strong></li>
+<li>Посмотрите результат в ноде Code (таблица с полем message)</li>
+</ol>
+<div class="warning-box">⚠️ Workflow не запускается сам, пока вы не нажмёте <strong>Active</strong> (вверху справа). На триале активация расписания может быть недоступна — для учёбы достаточно кнопки Execute.</div>
+<div class="info-box">💡 <strong>Не хотите трогать Code-ноду?</strong> В тарифе Cloud с AI-ассистентом просто опишите робота словами — ассистент сам расставит Schedule Trigger и действия. Code нужен, чтобы понимать механику, но для рабочего робота он не обязателен.</div>
+
+<h2>7. Шаг 3. Подключаем Telegram-бота</h2>
+<ol>
+<li>В Telegram: <strong>@BotFather</strong> → /newbot → придумайте имя → получите токен вида <code>123456:AA...</code></li>
+<li>В n8n: Add node → <strong>Telegram</strong> → Create credentials → вставьте токен → Save</li>
+<li>Узнайте свой chat_id: напишите боту <strong>@userinfobot</strong> — он пришлёт ваш id</li>
+<li>Настройте ноду Telegram: Resource = Message, Operation = Send Message, Chat ID = ваш id, Text = <code>{{ $json.message }}</code></li>
+<li>Execute → сообщение должно прийти в Telegram</li>
+</ol>
+<div class="warning-box">⚠️ Если бот пишет «chat not found» — сначала напишите своему боту /start, потом снова Execute.<br>⚠️ Для публикации в канал добавьте бота админом в канал и используйте chat_id канала (например, <code>-1001234567890</code>).</div>
+
+<h2>8. Шаг 4. Подключаем модель (LLM)</h2>
+<p>Модель подключается двумя путями: через HTTP Request (универсально и наглядно) или готовыми AI-нодами — в Cloud их расставит AI-ассистент.</p>
+<div class="info-box">💡 В Cloud с AI-ассистентом этот шаг можно не собирать руками: напишите ему «добавь ноду для LLM, подключи DeepSeek по моему ключу». Ручной HTTP Request всё равно стоит пройти: видно, что происходит внутри запроса, и такая же цепочка работает и в Cloud, и на своём сервере.</div>
+<ol>
+<li>Add node → <strong>HTTP Request</strong></li>
+<li>Method = POST, URL = <code>https://api.deepseek.com/chat/completions</code> (или endpoint вашего агрегатора — OpenRouter, AiTunnel)</li>
+<li>Authentication = Generic Credential Type → Header Auth → Name: <code>Authorization</code>, Value: <code>Bearer ВАШ_КЛЮЧ</code></li>
+<li>Send Body = JSON:</li>
+</ol>
+<pre>{
+  "model": "deepseek-chat",
+  "messages": [
+    { "role": "system", "content": "Ты редактор региональной редакции. Отбери 3 главные новости и дай анонс по 2 предложения." },
+    { "role": "user", "content": "{{ $json.posts }}" }
+  ]
+}</pre>
+<p>Ответ модели лежит в <code>{{ $json.choices[0].message.content }}</code> — передайте его в ноду Telegram.</p>
+<div class="warning-box">⚠️ Ключи и токены держите в Credentials, а не в тексте URL или body. Не публикуйте скриншоты с ключами.</div>
+
+<h2>9. Шаг 5. Рабочий сценарий: «Утренний дайджест редакции»</h2>
+<p>Логика: <strong>Schedule (08:00) → источник постов → LLM (отбор + анонсы) → Telegram (в чат редакции) → Google Sheets (лог)</strong>.</p>
+<ul>
+<li><strong>Schedule:</strong> Trigger Interval = Days, Hour = 8</li>
+<li><strong>Источник</strong> — один из двух:
+  <br>А (проще): RSS/HTTP к сайтам городских властей и конкурентов;
+  <br>Б (как на занятии): HTTP к вашему Telegram MCP / TGStat MCP (URL Railway + /mcp)</li>
+<li><strong>LLM:</strong> как в шаге 4 — отбор и анонсы</li>
+<li><strong>Telegram:</strong> отправка в рабочий чат</li>
+<li><strong>Google Sheets:</strong> Add node → Google Sheets → Append Row (логируем дату, тему, источник, ссылку)</li>
+<li>Execute → проверьте цепочку → Active</li>
+</ul>
+
+<h2>10. Демо-сценарий: «Мониторинг каналов + алерт»</h2>
+<p>Готовый шаблон из демо (собирать руками не нужно — импортируйте):</p>
+<p style="font-size:13px;background:var(--code-bg);padding:10px;border-radius:8px"><strong>Schedule (каждые 2 часа) → HTTP (Telegram/TGStat MCP: последние посты по ключевым словам) → LLM (классификатор: релевантно/нет + анонс) → Filter (только релевантное) → Telegram Bot (алерт) → Google Sheets (лог)</strong></p>
+<p>Что заменить под себя: город, ключевые слова, chat_id, ключи.</p>
+
+<h3>Как импортировать workflow</h3>
+<ol>
+<li>Скачайте JSON-файл шаблона (или скопируйте текст)</li>
+<li>n8n → вверху справа «…» → <strong>Import from File</strong> (или Import from Clipboard)</li>
+<li>Откроется холст с нодами</li>
+<li>Откройте каждую ноду с 🔴 (не настроена) → подставьте свои ключи / url / chat_id</li>
+<li>Execute для теста → Activate</li>
+</ol>
+
+<h3>Минимальный JSON-шаблон (для тренировки)</h3>
+<pre>{
+  "name": "Мой первый робот",
+  "nodes": [
+    {
+      "parameters": { "rule": { "interval": [ { "field": "minutes", "minutesInterval": 10 } ] } },
+      "id": "1",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": { "jsCode": "return [{ json: { message: 'Привет от n8n! ' + new Date().toLocaleString() } }];" },
+      "id": "2",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": { "Schedule Trigger": { "main": [ [ { "node": "Code", "type": "main", "index": 0 } ] ] } },
+  "active": false,
+  "settings": {},
+  "versionId": "1",
+  "meta": {},
+  "tags": []
+}</pre>
+<div class="highlight-box">🔁 Тот же JSON-файл потом импортируется в n8n на своём сервере: цепочка, собранная в Cloud, продолжает работать на VPS за ~800 ₽/мес (раздел 15).</div>
+
+<h2>11. Экономика: как не сжечь лимит</h2>
+<ul>
+<li>Не ставьте расписание чаще, чем нужно (раз в день или час, а не каждые 5 минут)</li>
+<li>Триггер «по событию» дешевле расписания — запуск только когда есть новость</li>
+<li>Тестируйте кнопкой Execute, а не Active</li>
+<li>Держите LLM-запросы короткими; черновой отбор делайте без модели (Filter по ключевым словам), а модель зовите только для анонсов</li>
+</ul>
+
+<h2>12. Безопасность</h2>
+<ul>
+<li><strong>Credentials</strong> — только внутри n8n. Не вставляйте ключи в Code/URL, которые потом кому-то покажете</li>
+<li>URL вашего Telegram MCP — персональный. Кто его знает, может читать и отправлять сообщения от вашего имени. Не публикуйте его</li>
+<li>Заведите отдельный бот для редакции, не личный</li>
+<li>Не гоняйте через n8n персональные данные и закрытые документы без обезличивания</li>
+<li>Перед Activate проверьте, куда уходит результат (в какой чат, какую таблицу)</li>
+</ul>
+
+<h2>13. Типичные ошибки и что делать</h2>
+<table>
+<tr><th>Симптом</th><th>Причина</th><th>Решение</th></tr>
+<tr><td>Workflow не запускается сам</td><td>Не нажат Active</td><td>Нажать Active</td></tr>
+<tr><td>401 Unauthorized</td><td>Неверный ключ/токен</td><td>Пересоздайте credential</td></tr>
+<tr><td>429 Too Many Requests</td><td>Лимит провайдера</td><td>Пауза, сменить агрегатор</td></tr>
+<tr><td>Telegram «chat not found»</td><td>Бот не в чате / не нажали /start</td><td>Добавьте бота, напишите /start</td></tr>
+<tr><td>Executions закончились</td><td>Уперлись в лимит Starter</td><td>Реже расписание или Pro / self-hosted</td></tr>
+<tr><td>Нода «красная», не сохраняется</td><td>Не заполнено обязательное поле</td><td>Откройте ноду, смотрите подсказку</td></tr>
+<tr><td>Ответ модели пустой</td><td>Неверный JSON body / путь к ответу</td><td>Проверьте вывод предыдущей ноды</td></tr>
+</table>
+
+<h2>14. Чек-лист «мой первый робот работает»</h2>
+<div class="checklist-item">Аккаунт n8n создан</div>
+<div class="checklist-item">Первый workflow (Schedule → Code) выполнен</div>
+<div class="checklist-item">Telegram-бот подключён, сообщение пришло</div>
+<div class="checklist-item">Модель подключена через HTTP Request</div>
+<div class="checklist-item">Собран рабочий сценарий (дайджест или мониторинг)</div>
+<div class="checklist-item">Логи пишутся в Google-таблицу</div>
+<div class="checklist-item">Workflow активирован (или импортирован шаблон)</div>
+<div class="checklist-item">Проверены безопасность и маршрут результата</div>
+<div class="checklist-item" style="color:var(--hint)">⭐ Со звёздочкой: поднят свой сервер n8n и импортирован в него workflow из Cloud</div>
+
+<h2>15. ⭐ Задание со звёздочкой: n8n на своём сервере (~800 ₽/мес)</h2>
+<p>Это необязательный шаг — но самый выгодный. Он сложнее остальных, зато решается за один вечер: раз подняв свой сервер, вы перестаёте платить за подписку.</p>
+<h3>Зачем это делать</h3>
+<ul>
+<li>Cloud — €24/мес (≈2 300–2 400 ₽), свой VPS — ≈800 ₽/мес. Разница почти втрое</li>
+<li>Нет лимита на 2 500 запусков: расписание «каждые 5 минут» перестаёт быть проблемой</li>
+<li>Данные и черновики остаются на вашем сервере, а не в облаке ЕС — для редакции это плюс</li>
+</ul>
+<h3>Путь: собрать в Cloud → перенести на VPS</h3>
+<ol>
+<li>В n8n Cloud с AI-ассистентом соберите рабочие цепочки (дайджест, мониторинг, кросс-постинг)</li>
+<li>Экспортируйте каждую: «…» → Download — получится JSON-файл workflow</li>
+<li>Арендуйте VPS за ~300–600 ₽/мес</li>
+<li>Разверните self-hosted n8n: официальный образ <code>n8nio/n8n</code> и одна команда docker run (либо docker-compose)</li>
+<li>Откройте свой n8n по адресу сервера → Import from File → выберите JSON из шага 2</li>
+<li>Заново впишите credentials: токены и ключи в Cloud и на своём сервере хранятся независимо — автоматически они не переносятся</li>
+<li>Проверьте Execute → включите Active</li>
+</ol>
+<h3>Что понадобится и что помнить</h3>
+<ul>
+<li>Базовое умение скопировать команду в терминал, 1–2 часа времени, аккаунт у хостинг-провайдера</li>
+<li>Если страшно — попросите IT-отдел: для системного администратора это задача на 20 минут</li>
+<li>Лимитов запусков нет, но есть лимиты сервера: следите за диском и памятью</li>
+<li>Раз в 1–2 месяца обновляйте образ docker — это исправления безопасности</li>
+<li>Раз в неделю выгружайте бэкап (workflow + база n8n), чтобы не потерять настройки</li>
+</ul>
+<div class="highlight-box"><strong>Когда это оправдано:</strong> если роботов больше двух или расписание частое — лимит Cloud (2 500 запусков) сгорит за недели, и self-hosted окупается сразу.</div>
+
+<h2>16. Что дальше (ДЗ на месяц)</h2>
+<p>Выберите одно:</p>
+<ul>
+<li><strong>А.</strong> Импортировать шаблон мониторинга и запустить его со своим городом и ключевыми словами</li>
+<li><strong>Б.</strong> Собрать «Утренний дайджест редакции» и включить на 7 дней</li>
+<li><strong>В.</strong> Автоматизировать кросс-постинг: один материал → посты в 3–4 площадки</li>
+<li><strong>Г.</strong> Всё вместе</li>
+<li><strong>Д. ⭐</strong> Перенести свои цепочки на свой сервер (~800 ₽/мес вместо €24) — пошагово в разделе 15</li>
+</ul>
+<div class="highlight-box">Вопросы — в чат курса. Если что-то не сработало с первого раза, это нормально: n8n требует 10–15 минут «докрутки», дальше работает сам.</div>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 23.09.2026</p></footer>
+</div>
+</body>
+</html>
