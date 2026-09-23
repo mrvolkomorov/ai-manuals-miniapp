@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Конспект занятия 1: Настройка инфраструктуры ИИ-агента | Мануалы</title>
+<style>
+:root{--accent:#64748b;--accent-dark:#475569;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.22);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content p{margin-bottom:12px;font-size:14px}.content h2{font-size:17px;font-weight:700;margin:28px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #cbd5e1}.content h2:first-child{margin-top:0}.content h3{font-size:15px;font-weight:700;margin:18px 0 6px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px;word-break:break-all}.content .highlight-box{background:#f1f5f9;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}.content th{background:var(--code-bg);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 10px;border:1px solid var(--border);vertical-align:top}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:#cbd5e1}.content h2{border-bottom-color:#333}.highlight-box{background:#1e293b}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">Конспект занятия 1</div>
+<h1>Настройка инфраструктуры ИИ-агента: Telegram, Railway, OpenRouter</h1>
+<div class="meta">Занятие 16.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<h2>1. Архитектура ИИ-агента: анатомия</h2>
+<p>ИИ-агент — система, которая самостоятельно выполняет задачи через нейросети. Состоит из трёх компонентов:</p>
+<ul>
+<li><strong>Мозг</strong> — нейросеть (языковая модель), которая принимает решения и генерирует ответы. Подключается через агрегаторы: <strong>OpenRouter</strong> (500+ моделей, международный стандарт) или <strong>AITunnel</strong> (российский аналог, оплата в рублях)</li>
+<li><strong>Туловище</strong> — приложение-агрегатор, где собирается агент. Пример: LobeHub (китайское приложение, доступно в браузере бесплатно). Здесь настраивается роль, инструкции и подключаются инструменты</li>
+<li><strong>Гаечные ключи</strong> — MCP-серверы (коннекторы), которые дают агенту доступ к внешним сервисам: Telegram-сервер (чтение каналов, отправка сообщений), TGStat-сервер (статистика), другие инструменты (Google Docs, поиск)</li>
+<li><strong>Навыки (скиллы)</strong> — текстовые инструкции, которые объясняют агенту, как пользоваться инструментами. Без них агент, имея мозг и ключ, не знает, как им пользоваться</li>
+</ul>
+
+<h2>2. GitHub: аккаунт и форк репозитория</h2>
+<p>GitHub — главный ресурс для разработчиков, где хранятся приложения с открытым кодом.</p>
+<ol>
+<li>Создать аккаунт на github.com через Google</li>
+<li>Перейти по ссылке на репозиторий с Telegram-сервером</li>
+<li>Нажать <strong>Fork</strong> — создать свою копию</li>
+</ol>
+<div class="warning-box"><strong>Проблема:</strong> при массовой регистрации с одного IP (из офиса) GitHub выдаёт ошибку превышения лимита запросов. <strong>Решение:</strong> повторить позже или с другого IP.</div>
+
+<h2>3. Получение доступов Telegram</h2>
+<p>Для подключения агента к Telegram как пользователю (не боту) нужны три значения: <strong>API ID</strong>, <strong>API hash</strong>, <strong>Session string</strong>.</p>
+<h3>Шаг 1. my.telegram.org → API Development Tools</h3>
+<p>Создать приложение: платформа Web, название любое (MyMCP). Нажать Create application, сохранить API ID и API hash.</p>
+<h3>Шаг 2. Session string через Google Colab</h3>
+<p>Последовательно запустить ячейки, ввести API ID, API hash, код из Telegram и пароль двухфакторной аутентификации. Сохранить длинную строку session string.</p>
+<div class="warning-box"><strong>Проблема:</strong> у большинства участников возникала ошибка при создании приложения. Возможные причины: VPN, расширения браузера (блокировщики), Яндекс.Браузер. Успешно прошли шаг через Google Chrome без расширений; у Арины получилось с телефона.</div>
+
+<h2>4. Развёртывание серверов на Railway</h2>
+<p>Railway — сервис для быстрого развёртывания приложений из GitHub.</p>
+<p><strong>Процесс для Telegram-сервера:</strong></p>
+<ol>
+<li>Зарегистрироваться на railway.com через Google (триал 30 дней)</li>
+<li>New Project → Deploy from GitHub repo → вставить ссылку на свой Fork</li>
+<li>Settings → Variables → добавить: <code>tg_api_id</code>, <code>tg_api_hash</code>, <code>tg_session_string</code></li>
+<li>Нажать Deploy, дождаться сборки</li>
+<li>Settings → Networking → Generate Domain → сохранить полученную ссылку</li>
+</ol>
+<p><strong>Для TGStat-сервера</strong> — аналогично: вставить свой Fork TGStat-сервера и переменную <code>tgstat_token</code>.</p>
+<div class="warning-box"><strong>Проблема:</strong> при ошибке Failed to build проверьте имя переменной — нижние подчёркивания важны (<code>tg_api_id</code>, а не <code>tgapiid</code>).</div>
+
+<h2>5. DeepGram: транскрибация аудио и видео</h2>
+<p>DeepGram (playground.deepgram.com) — сервис для превращения звука и видео в текст.</p>
+<ul>
+<li>Поддержка русского языка — отлично работает</li>
+<li>Несколько моделей: Whisper (OpenAI), Nova (Amazon)</li>
+<li>Smart Format — автоматическое разбиение на абзацы</li>
+<li>Пунктуация и параграфы</li>
+<li>Принимает и видеофайлы</li>
+</ul>
+<p><strong>Процесс:</strong> регистрация через Google или GitHub (кредит $200). Playground → Speech to Text → Pre-recorded → Upload Audio. Выбрать русский язык, модель, отметить Smart Format, пунктуацию, параграфы → Run.</p>
+<div class="highlight-box">Для больших видео рекомендуется извлечь аудиодорожку в видеоредакторе (OpenShot и др.) — будет быстрее.</div>
+
+<h2>6. Сборка агента в LobeHub</h2>
+<p>LobeHub — приложение для создания ИИ-агентов, работает в браузере (lobehub.com).</p>
+<p><strong>Подключение нейросетей:</strong></p>
+<ol>
+<li>Авторизоваться в LobeHub (через Google)</li>
+<li>Зайти в настройки поставщиков</li>
+<li>Выбрать OpenRouter</li>
+<li>Вставить API-ключ и URL proxy API: <code>https://openrouter.ai/api/v1</code></li>
+<li>Нажать «Загрузить модели»</li>
+<li>Включить нужные модели переключателем</li>
+</ol>
+<div class="highlight-box"><strong>Модель агента:</strong> мозг (нейросеть через OpenRouter) + туловище (LobeHub) + гаечный ключ (Telegram/TGStat-серверы на Railway) + навыки (инструкции агенту).</div>
+
+<h2>7. Экономика нейросетей</h2>
+<p>Два способа оплаты:</p>
+<ul>
+<li><strong>Подписка</strong> — фиксированная сумма в месяц (ChatGPT Plus $20). Ограниченный лимит токенов</li>
+<li><strong>API-ключи</strong> — оплата за фактическое использование через OpenRouter или AITunnel</li>
+</ul>
+<p><strong>Стоимость за 1 млн токенов (выход):</strong></p>
+<table>
+<tr><th>Модель</th><th>Цена</th></tr>
+<tr><td>DeepSeek</td><td>~$0.14 — дешёвая, хорошо соображает</td></tr>
+<tr><td>Qwen Max</td><td>~$0.94 — китайская модель</td></tr>
+<tr><td>GPT</td><td>$10.00 — премиум</td></tr>
+<tr><td>Claude</td><td>$15.00 — премиум</td></tr>
+</table>
+<p><strong>Расход токенов на практике:</strong></p>
+<ul>
+<li>Транскрибация 3 часов разговора ≈ 1 млн токенов</li>
+<li>Небольшая задача агента ≈ 150–200 тыс. токенов</li>
+<li>Масштабный проект с агентом — 1–2 млн токенов за час</li>
+</ul>
+
+<h2>8. Инструменты без зарубежной карты</h2>
+<ul>
+<li><strong>AITunnel.ru</strong> — российский агрегатор, оплата в рублях. Тот же принцип, что у OpenRouter, но меньше выбор моделей. Есть встроенный чат для общения с разными моделями</li>
+<li><strong>Сингапурская карта</strong> — самый удобный вариант (8–10 долларов за выпуск, налоги не добавляются). Европейские карты могут добавлять 2–3 доллара налогов к подписке. Claude может отклонять даже такие карты</li>
+</ul>
+
+<h2>9. Безопасность</h2>
+<ul>
+<li>Данные для доступа к Telegram (API ID, API hash, session string) хранятся как секреты на Railway — их видите только вы и приложение</li>
+<li>Форки клиентов Telegram (Nicegram и др.) — непроверенные приложения, могут использовать ваши данные</li>
+<li>Для OpenRouter API-ключ показывается только один раз при создании — сразу сохраните в надёжное место</li>
+</ul>
+
+<h2>10. Дальнейшие шаги</h2>
+<p><strong>На следующем занятии:</strong></p>
+<ol>
+<li>Соединить мозг (OpenRouter), туловище (LobeHub) и гаечные ключи (Telegram/TGStat)</li>
+<li>Настроить навыки — инструкции для агента</li>
+<li>Собрать работающего агента, который сможет получать и анализировать данные из Telegram</li>
+</ol>
+<div class="highlight-box"><strong>Домашнее задание:</strong> повторить весь пройденный путь — создать GitHub, получить доступы Telegram, развернуть серверы на Railway, подключить TGStat и нейросети к LobeHub.</div>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Конспект занятия 1</p></footer>
+</div>
+</body>
+</html>
