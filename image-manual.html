@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Картинка за 5 минут: генерация и редактирование | Мануалы</title>
+<style>
+:root{--accent:#f43f5e;--accent-dark:#e11d48;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--hint:#64748b;--code-bg:#f1f5f9;--radius-lg:16px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f8fafc;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:720px;margin:0 auto;padding-bottom:60px}.page-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;padding:28px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}.page-header .back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.8);text-decoration:none;font-size:13px;font-weight:500;margin-bottom:12px}.page-header .back:hover{color:#fff}.page-header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}.page-header h1{font-size:21px;font-weight:700;line-height:1.3;margin-bottom:6px}.page-header .meta{font-size:13px;opacity:.85}.content{padding:24px 20px}.content p{margin-bottom:12px;font-size:14px}.content h2{font-size:18px;font-weight:700;margin:30px 0 10px;color:var(--accent-dark);padding-bottom:6px;border-bottom:2px solid #fecdd3;display:flex;align-items:center;gap:8px}.content h2:first-child{margin-top:0}.content h3{font-size:15px;font-weight:700;margin:20px 0 8px}.content ul,.content ol{margin:8px 0 16px 20px;font-size:14px}.content li{margin-bottom:6px;line-height:1.5}.content code{background:var(--code-bg);border-radius:6px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:13px;padding:2px 6px;word-break:break-all}.content pre{background:#1e293b;color:#e2e8f0;border-radius:8px;padding:12px 14px;margin:10px 0 18px;overflow-x:auto;line-height:1.5;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:12.5px;white-space:pre-wrap;word-break:break-word}.content .highlight-box{background:#fff1f2;border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .warning-box{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content .info-box{background:#eff6ff;border-left:3px solid #3b82f6;padding:12px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12.5px}.content th{background:var(--code-bg);padding:8px 10px;text-align:left;font-weight:600;border:1px solid var(--border)}.content td{padding:8px 10px;border:1px solid var(--border);vertical-align:top}.bans{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px 14px;margin:10px 0 18px;font-size:13.5px;line-height:1.6;color:#991b1b;font-weight:500}.prompt-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:10px 0;font-size:13px;line-height:1.55;border-left:3px solid var(--accent)}.prompt-box .ptitle{font-weight:700;color:var(--accent-dark);margin-bottom:4px;font-size:13px}.checklist-item{padding:4px 0 4px 24px;position:relative;font-size:14px;line-height:1.5}.checklist-item::before{content:'☐';position:absolute;left:0;color:var(--accent);font-size:15px}.footer{text-align:center;padding:20px;font-size:12px;color:var(--hint)}@media(prefers-color-scheme:dark){:root{--surface:#1e1e1e;--border:#333;--text:#e2e8f0;--hint:#94a3b8;--code-bg:#1e293b}body{background:#0f172a}.content h2{color:var(--accent)}.content h2{border-bottom-color:#333}.highlight-box{background:#1a0a0e}.bans{background:#1a0a0a;color:#fca5a5}.prompt-box{background:#1a0a0e}}</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<a href="index.html" class="back">← Назад к мануалам</a>
+<div class="badge">Визуал</div>
+<h1>Картинка за 5 минут: генерация и редактирование</h1>
+<div class="meta">v1.0 · 23.09.2026 · Курс ИИ-инструменты для региональной редакции</div>
+</header>
+<div class="content">
+
+<div class="highlight-box">На втором занятии мы не успели дойти до визуала. Этот документ закрывает пробел: от промпта и генерации — до редактирования и чек-листа «можно ли это публиковать».</div>
+
+<h2>1. Что вы сможете после этого мануала</h2>
+<ul>
+<li>Сделать иллюстрацию к посту за 5 минут</li>
+<li>Сгенерировать обложку статьи, афишу события, фон под цитату</li>
+<li>Отредактировать готовую картинку: убрать лишний объект, расширить кадр, подогнать под формат площадки</li>
+<li>Понимать, когда ИИ-картинку публиковать нельзя</li>
+</ul>
+
+<h2>2. Четыре действия, которые нужно знать</h2>
+<table>
+<tr><th>Действие</th><th>Что это</th><th>Зачем редакции</th></tr>
+<tr><td><strong>Text-to-image</strong></td><td>Генерация по текстовому промпту</td><td>Иллюстрация с нуля</td></tr>
+<tr><td><strong>Inpaint</strong></td><td>Замена выделенной области</td><td>Убрать лишний объект, исправить артефакт</td></tr>
+<tr><td><strong>Outpaint</strong></td><td>Расширение холста за границы кадра</td><td>Дотянуть до формата 16:9 / 9:16</td></tr>
+<tr><td><strong>Upscale</strong></td><td>Увеличение разрешения</td><td>Печать, баннер, 2К/4К</td></tr>
+</table>
+
+<h2>3. Инструменты 2026: что выбрать</h2>
+<table>
+<tr><th>Инструмент</th><th>Доступ</th><th>Плюсы</th><th>Минусы</th></tr>
+<tr><td><strong>Kandinsky</strong> (fusionbrain.ai)</td><td>Бесплатно, без VPN</td><td>Русский промпт, inpaint, апскейл, разные форматы</td><td>Лимиты бесплатного; апскейл/несколько вариантов — на платном (Creator от 499 ₽/мес)</td></tr>
+<tr><td><strong>Шедеврум</strong> (Яндекс)</td><td>Бесплатно, без регистрации</td><td>Неограниченные генерации, мобильное приложение</td><td>На бесплатном — водяной знак; Про 100 ₽/мес</td></tr>
+<tr><td><strong>GigaChat</strong></td><td>Бесплатно</td><td>Картинка прямо в диалоге, с текстом</td><td>Качество ниже специализированных</td></tr>
+<tr><td><strong>Qwen</strong></td><td>Бесплатно, без VPN</td><td>Чат с генерацией, удобно в связке с текстом</td><td>Качество переменное</td></tr>
+<tr><td><strong>GPT Image / Nano Banana / Flux / Midjourney</strong></td><td>Через VPN или RU-агрегаторы (BotHub, GPTunnel)</td><td>Максимальное качество и фотореализм</td><td>Оплата и доступ сложнее</td></tr>
+</table>
+<div class="info-box"><strong>Правило выбора:</strong> для ежедневной редакционной работы — Kandinsky / FusionBrain или Шедеврум. Для спецпроектов и «журнального» качества — агрегаторы зарубежных моделей с оплатой в рублях.</div>
+
+<h2>4. Формула промпта</h2>
+<p style="font-size:14px;font-weight:600;color:var(--accent-dark)">Объект → Действие → Окружение → Стиль → Цвета → Формат → ЗАПРЕТЫ</p>
+<p>Шаблон, который можно копировать:</p>
+<pre>[Объект: что/кто], [что делает], [окружение: где, время суток, погода].
+Стиль: [фотореализм / иллюстрация / инфографика / акварель].
+Цвета: [фирменные цвета редакции].
+Формат: [16:9 горизонтальный / 1:1 / 9:16].
+Запреты: без людей, без лиц, без логотипов, без торговых марок, без текста, без водяных знаков.</pre>
+<h3>Разбор на примере</h3>
+<div class="prompt-box">Парк в центре города, осенний пейзаж, золотые листья, скамейки, утренний свет. Стиль: фотореализм. Цвета: тёплый оранжевый, приглушённый зелёный. Формат: 16:9. Запреты: без людей, без лиц, без логотипов, без текста.</div>
+<div class="highlight-box">Чем конкретнее объект, время суток и свет — тем лучше результат. «Красивый город» даст случайную картинку, «старая водонапорная башня на закате, силуэт» — почти всегда нужную.</div>
+
+<h2>5. Обязательные ЗАПРЕТЫ</h2>
+<p>Копируйте этот блок в каждый промпт:</p>
+<div class="bans">без людей, без лиц, без логотипов, без торговых марок, без текста, без водяных знаков, без государственной символики</div>
+<p><strong>Почему это критично:</strong></p>
+<ul>
+<li><strong>Люди и лица</strong> — риск «фейкового фотофакта», портретного сходства, лишних вопросов</li>
+<li><strong>Логотипы и торговые марки</strong> — риск претензий правообладателя</li>
+<li><strong>Государственная символика</strong> — можно получить искажённый флаг/герб, что недопустимо в публикации</li>
+<li><strong>Текст</strong> — ИИ рисует буквы с ошибками</li>
+</ul>
+
+<h2>6. Пять готовых промптов под редакционные задачи</h2>
+<div class="prompt-box"><div class="ptitle">1. Городской пейзаж (рубрика «Наш город»)</div>Центральная площадь провинциального города вечером, фонари, мокрая брусчатка после дождя, силуэты зданий на фоне заката. Стиль: фотореализм. Цвета: тёплый янтарный, тёмно-синий. Формат: 16:9. Запреты: без людей, без лиц, без логотипов, без текста.</div>
+<div class="prompt-box"><div class="ptitle">2. Дорожные работы (городская повестка)</div>Участок городской дороги с ремонтом: свежий асфальт, дорожные конусы, красно-белая лента, техника без опознавательных знаков. Стиль: репортажное фото. Цвета: серый, оранжевый. Формат: 16:9. Запреты: без людей, без лиц, без логотипов, без торговых марок, без текста.</div>
+<div class="prompt-box"><div class="ptitle">3. Осенняя рубрика</div>Осенний двор жилого дома, клёны, ковёр из опавших листьев, скамейка, детская площадка без детей. Стиль: мягкая иллюстрация. Цвета: золотой, кирпично-красный. Формат: 1:1. Запреты: без людей, без лиц, без логотипов, без текста.</div>
+<div class="prompt-box"><div class="ptitle">4. Афиша события (фон без текста)</div>Сцена в небольшом городском ДК перед концертом, приглушённый свет, микрофон, пустой зал на заднем плане. Стиль: кинематографичный фотореализм. Цвета: глубокий бордовый, тёплый бежевый. Формат: 9:16. Запреты: без людей, без лиц, без логотипов, без текста, без водяных знаков.</div>
+<div class="prompt-box"><div class="ptitle">5. Фон под цитату</div>Абстрактный фон: мягкие волны тумана над рекой на рассвете. Стиль: минимализм. Цвета: приглушённый зелёный и тёплый бежевый. Формат: 9:16. Запреты: без людей, без текста, без логотипов.</div>
+
+<h2>7. Пошагово: Kandinsky / FusionBrain</h2>
+<ol>
+<li>Зайдите на <a href="https://fusionbrain.ai">fusionbrain.ai</a>, войдите через SberID / GigaChat</li>
+<li>Выберите соотношение сторон: 16:9 (широкий), 1:1 (квадрат), 9:16 (вертикаль для сторис)</li>
+<li>Вставьте промпт, добавьте негативный промпт (тот же блок запретов)</li>
+<li>Сгенерируйте, посмотрите варианты</li>
+<li>Скачайте файл без водяного знака (если тариф даёт) или сделайте скриншот без интерфейса</li>
+<li>Доработайте (см. раздел 8)</li>
+</ol>
+<div class="info-box">Шедеврум устроен проще: вводите промпт в приложении, получаете 4 варианта, выбираете лучший. Для быстрых картинок «на бегу» — самое удобное.</div>
+
+<h2>8. Редактирование</h2>
+<table>
+<tr><th>Задача</th><th>Действие</th><th>Промпт</th></tr>
+<tr><td>Убрать лишний объект</td><td>Inpaint → выделить объект</td><td>«Убрать, оставить только фон»</td></tr>
+<tr><td>Заменить объект</td><td>Inpaint → выделить область</td><td>«Заменить на скамейку у пруда»</td></tr>
+<tr><td>Дотянуть формат</td><td>Outpaint → расширить холст</td><td>«Продолжить небо и дорогу»</td></tr>
+<tr><td>Увеличить разрешение</td><td>Upscale / «Улучшить»</td><td>—</td></tr>
+</table>
+<div class="highlight-box">Inpaint — это «забота редактора»: даже одна перегенерированная область часто спасает картинку.</div>
+
+<h2>9. Текст и логотип — только руками</h2>
+<ul>
+<li>Заголовки и подписи накладывайте в Canva / Photoshop / Figma / любом редакторе. ИИ почти гарантированно ошибётся в буквах</li>
+<li>Фирменный логотип не просите нарисовать — вставляйте файл поверх картинки</li>
+<li>Фирменные цвета в промпте задавайте словами («приглушённый зелёный и тёплый бежевый»), а точный цвет — заливкой в редакторе. Это даёт единство рубрики</li>
+</ul>
+
+<h2>10. Чек-лист перед публикацией</h2>
+<div class="checklist-item">Нет лиц (или есть согласие / это не реальный человек)</div>
+<div class="checklist-item">Нет логотипов и торговых марок</div>
+<div class="checklist-item">Нет государственной символики</div>
+<div class="checklist-item">Нет искажённого текста</div>
+<div class="checklist-item">Нет водяных знаков</div>
+<div class="checklist-item">Картинка не выглядит как реальный фотофакт события (иначе — пометка «иллюстрация»)</div>
+<div class="checklist-item">Проверены метаданные файла (EXIF)</div>
+<div class="checklist-item">Есть пометка о генерации ИИ, если это уместно</div>
+
+<h2>11. Право, этика и маркировка</h2>
+<ul>
+<li><strong>Маркировка ИИ-контента.</strong> 26.07.2026 подписан ФЗ № 243-ФЗ об ИИ. Механизм маркировки вводится с 1 марта 2027. Автор маркирует контент добровольно, а площадки с аудиторией более 500 тыс. пользователей обязаны дать техническую возможность поставить пометку</li>
+<li><strong>Практика сейчас:</strong> в подписи указывайте «Иллюстрация сгенерирована ИИ» — это снимает вопросы и у читателей, и у редакции</li>
+<li><strong>Не используйте</strong> промпты «в стиле художника X» и не воспроизводите чужие работы — риск авторских претензий</li>
+<li><strong>Коммерческое использование.</strong> Kandinsky/FusionBrain разрешает при соблюдении правил сервиса; у каждого сервиса свои условия — читайте перед размещением рекламы</li>
+<li><strong>Не генерируйте</strong> реалистичные изображения узнаваемых людей и событий, которых не было (дипфейк-риски — главный красный флаг в новостных редакциях)</li>
+<li><strong>Метаданные.</strong> EXIF сгенерированных файлов может содержать данные сервиса. Проверьте файл через exifdata.com или «Свойства файла» перед публикацией</li>
+</ul>
+
+<h2>12. Типичные ошибки и что делать</h2>
+<table>
+<tr><th>Проблема</th><th>Решение</th></tr>
+<tr><td>Кривые руки/лица</td><td>В промпт — «без людей»; либо inpaint-перегенерация</td></tr>
+<tr><td>Абракадабра вместо текста</td><td>Убрать текст из промпта, накладывать руками</td></tr>
+<tr><td>«Выглядит слишком ИИшно»</td><td>Добавить стиль, свет, ракурс, реальные детали места</td></tr>
+<tr><td>Мусор в деталях</td><td>Апскейл + inpaint или перегенерация</td></tr>
+<tr><td>Водяной знак</td><td>Платный тариф или другой сервис</td></tr>
+<tr><td>Все картинки одинаковые</td><td>Менять ракурс, время суток, стиль; добавлять 2–3 детали темы</td></tr>
+</table>
+
+<h2>13. Чек-лист и ДЗ на месяц</h2>
+<p><strong>Чек-лист навыка:</strong></p>
+<div class="checklist-item">Сгенерирована 1+ картинка в Kandinsky / Шедевруме</div>
+<div class="checklist-item">Промпт построен по формуле и содержит запреты</div>
+<div class="checklist-item">Сделана правка через inpaint или outpaint</div>
+<div class="checklist-item">Проверена EXIF и чек-лист перед публикацией</div>
+<div class="highlight-box" style="margin-top:16px"><strong>ДЗ:</strong> сделайте 5 иллюстраций по бренд-буку — по одной на каждую рубрику редакции. Сдайте в чат курса.</div>
+<p>Вопросы — в чат курса. Если картинка вышла неудачной — перегенерируйте, добавив конкретики про место и свет: обычно с третьей попытки получается рабочая иллюстрация.</p>
+
+</div>
+<footer class="footer"><p>Курс ИИ-инструменты для региональной редакции · Обновлено 23.09.2026</p></footer>
+</div>
+</body>
+</html>
